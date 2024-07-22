@@ -1,0 +1,153 @@
+/* FÄRGER.
+
+Brun: #43332A
+Beige: #d4ae8e
+Gul: #d6b54c
+Grön: #8ea178
+
+Röd: #b10c0e
+
+*/
+
+/* Normalisering. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body. */
+body {
+    background-color: #43332A;
+    color: #ffffff;
+    font-family: 'Glacial Indifference', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    /* Länkar. */
+    a {
+        color: white;
+    }
+}
+
+/* Header. */
+header {
+    background-color: #43332A;
+    display: flex;
+    justify-content: space-between;
+
+    /* Inline nav-meny syns inte. */
+    nav {
+        display: none;
+    }
+
+    /* Hamburger-meny ikon. */
+    #mobile-menu {
+        margin: 4.5rem 2rem 3rem 0;
+    }
+
+    /* Logotyp. */
+    img {
+        max-width: 200px;
+        margin: 2rem 0 2rem 1rem;
+    }
+}
+
+/* Main. */
+main {
+    height: 74vh;
+}
+
+/* Footer. */
+footer {
+    margin: 2rem 0 2rem 1rem;
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .fa-solid {
+        margin-right: 0.35rem;
+    }
+
+    div {
+        line-height: 1.6;
+    }
+
+    h3 {
+        margin: 1.5rem 0 0 0;
+    }
+
+    /* Logotyp. */
+    #footer-logo {
+        text-align: center;
+
+        img {
+            max-width: 200px;
+            margin: 3rem 0 2rem 0;
+        }
+    }
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 769px) {
+
+    /* Header. */
+    header {
+
+        /* Inline meny. */
+        nav {
+            display: block;
+            font-size: 24px;
+
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    color: #d6b54c;
+                    transition: all 0.5s;
+                    text-shadow: 1px 1px 2px black;
+                }
+            }
+        }
+
+        nav ul {
+            margin: 4rem 5rem 2rem 0;
+            font-weight: bold;
+        }
+
+        nav ul li {
+            list-style-type: none;
+            display: inline;
+            margin: 1rem;
+        }
+
+        /* Hamburger-meny ikon syns inte. */
+        #mobile-menu {
+            display: none;
+        }
+
+        /* Logotyp. */
+        img {
+            margin: 2rem 0 2rem 3rem;
+        }
+    }
+
+    /* Footer. */
+    footer {
+        display: flex;
+        justify-content: space-evenly;
+
+        h3 {
+            margin: 0 0 0.25rem 0;
+        }
+
+        /* Logotyp. */
+        #footer-logo {
+            img {
+                margin: 1rem 0 0 0;
+            }
+        }
+    }
+}

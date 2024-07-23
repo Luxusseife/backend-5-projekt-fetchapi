@@ -27,7 +27,8 @@ body {
 
     /* Länkar. */
     a {
-        color: white;
+        color: #ffffff;
+        cursor: pointer;
     }
 }
 
@@ -36,22 +37,52 @@ header {
     background-color: #43332A;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 10;
+}
 
-    /* Inline nav-meny syns inte. */
-    nav {
-        display: none;
-    }
+/* Desktop-meny syns inte. */
+#desktop-links {
+    display: none;
+}
 
-    /* Hamburger-meny ikon. */
-    #mobile-menu {
-        margin: 4.5rem 2rem 3rem 0;
-    }
+/* Hamburger-meny, ikon. */
+#mobile-menu {
+    display: block;
+    cursor: pointer;
+}
 
-    /* Logotyp. */
-    img {
-        max-width: 200px;
-        margin: 2rem 0 2rem 1rem;
-    }
+/* Hamburger-meny, länkar. */
+#mobile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #d4ae8e;
+    position: absolute;
+    top: -175%;
+    left: 0;
+    padding: 0.75rem 0;
+    transition: top 0.45s ease-in-out;
+}
+
+#mobile-links li {
+    list-style: none;
+    margin: 0.5rem 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#mobile-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Logotyp. */
+img {
+    max-width: 200px;
 }
 
 /* Main. */
@@ -61,16 +92,19 @@ main {
 
 /* Footer. */
 footer {
-    margin: 2rem 0 2rem 1rem;
+    margin: 2rem 0 2rem 2rem;
 
+    /* Hover-effekt på länkar. */
     a:hover {
         text-decoration: none;
     }
 
+    /* Fontawesome ikoner. */
     .fa-solid {
         margin-right: 0.35rem;
     }
 
+    /* Sektioner med information. */
     div {
         line-height: 1.6;
     }
@@ -81,8 +115,6 @@ footer {
 
     /* Logotyp. */
     #footer-logo {
-        text-align: center;
-
         img {
             max-width: 200px;
             margin: 3rem 0 2rem 0;
@@ -93,45 +125,37 @@ footer {
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 
-    /* Header. */
-    header {
+    /* Desktop-meny, länkar. */
+    #desktop-links {
+        display: flex;
+    }
 
-        /* Inline meny. */
-        nav {
-            display: block;
-            font-size: 24px;
+    #desktop-links li {
+        list-style-type: none;
+        margin: 1rem;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
 
-            a {
-                text-decoration: none;
+    #desktop-links li a {
+        text-decoration: none;
+        color: #fff;
+    }
 
-                &:hover {
-                    color: #d6b54c;
-                    transition: all 0.5s;
-                    text-shadow: 1px 1px 2px black;
-                }
-            }
-        }
+    /* Hover-effekt för länkar. */
+    #desktop-links li a:hover {
+        color: #d6b54c;
+        transition: all 0.5s;
+        text-shadow: 1px 1px 2px black;
+    }
 
-        nav ul {
-            margin: 4rem 5rem 2rem 0;
-            font-weight: bold;
-        }
+    /* Hamburger-meny, ikon och länkar syns inte. */
+    #mobile-menu {
+        display: none;
+    }
 
-        nav ul li {
-            list-style-type: none;
-            display: inline;
-            margin: 1rem;
-        }
-
-        /* Hamburger-meny ikon syns inte. */
-        #mobile-menu {
-            display: none;
-        }
-
-        /* Logotyp. */
-        img {
-            margin: 2rem 0 2rem 3rem;
-        }
+    #mobile-links {
+        display: none;
     }
 
     /* Footer. */
@@ -150,4 +174,9 @@ footer {
             }
         }
     }
+}
+
+/* Aktivt läge för mobil-menyn. */
+#mobile-links.active {
+    top: 100%;
 }

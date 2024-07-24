@@ -1,0 +1,212 @@
+/* Rubrik. */
+h1 {
+    text-align: left;
+    font-size: 2em;
+    margin: 2rem 0 0 0;
+}
+
+/* Container för bildkarusell. */
+.carousel-container {
+    margin-top: 1rem;
+    overflow: hidden;
+    background: #43332A;
+    white-space: nowrap;
+}
+
+/* Hover-effekt på bildkarusell. */
+.carousel-container:hover .img-carousel {
+    animation-play-state: paused;
+}
+
+/* Bildkarusell. */
+.img-carousel {
+    display: inline-block;
+    animation: 45s carousel infinite linear;
+
+    /* Bilder. */
+    img {
+        height: 350px;
+    }
+}
+
+/* Animation för bildkarusell. */
+@keyframes carousel {
+    from {
+        transform: translateX(0)
+    }
+
+    to {
+        transform: translateX(-100%)
+    }
+}
+
+/* Beskrivande text under bildkarusell. */
+#scroll-text {
+    margin: 3rem 0 7rem 0;
+    text-align: center;
+    transition: opacity 0.5s ease;
+
+    p {
+        font-size: 50px;
+    }
+}
+
+/* Sektion för meny. */
+#menu {
+    text-align: left;
+    line-height: 2;
+    margin: 2rem;
+
+    /* Glass-rubriker. */
+    h2 {
+        margin-top: 1rem;
+        color: #d4ae8e;
+    }
+}
+
+/* Glass-poster. */
+.icecream-list li {
+    margin-bottom: 1rem;
+    list-style-type: none;
+}
+
+/* Kategori-bilder. */
+.category img {
+    width: 100%;
+    max-width: 400px;
+    max-height: auto;
+    margin-top: 1rem;
+    border: 5px solid #d4ae8e;
+}
+
+/* Sektionen för omdömen. */
+#score {
+    text-align: center;
+
+    /* Bild. */
+    img {
+        width: 100%;
+        max-width: 400px;
+        border: 5px solid #8ea178;
+        margin-top: 2rem;
+    }
+}
+
+/* Container för omdömes-slide. */
+.score-container {
+    margin-top: 1rem;
+    overflow: hidden;
+    background: #43332A;
+    white-space: nowrap;
+    margin: 4rem 2rem 2rem 2rem;
+    overflow: hidden;
+}
+
+/* Omdömes-slide. */
+.score-slide {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: pointer;
+}
+
+/* "Lista" med omdömen. */
+#score-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style-type: none;
+    line-height: 2;
+}
+
+/* Listelement med stjärnor, namn och datum. */
+#score-list li {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    width: 200px;
+
+    /* Betygs-text. */
+    p {
+        font-size: 20px;
+    }
+}
+
+/* Betygsstjärna, fylld. */
+.full-star {
+    color: #d6b54c;
+}
+
+/* Betygsstjärna, tom. */
+.empty-star {
+    color: #c4c3c3;
+}
+
+/* Container för "om oss". */
+.about-container {
+    line-height: 2;
+    margin: 2rem;
+
+    /* Brödtext. */
+    p {
+        max-width: 60ch;
+    }
+
+    /* Bild. */
+    img {
+        width: 100%;
+        max-width: 400px;
+        border: 5px solid #8ea178;
+        margin-top: 2rem;
+    }
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 769px) {
+
+    .img-carousel {
+
+        img {
+            height: 500px;
+        }
+    }
+
+    .menu-categories {
+        width: 100%;
+    }
+
+    .category {
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            margin: 5rem;
+        }
+    }
+
+    h1,
+    #menu,
+    #score-list {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .about-container {
+        line-height: 2;
+        margin: 2rem 1rem 2rem 1rem;
+
+        img {
+            max-width: 400px;
+        }
+    }
+
+    #about {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+}

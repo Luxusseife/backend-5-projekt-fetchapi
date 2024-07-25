@@ -17,7 +17,13 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 
 1. Utvecklingsmiljön för projektet förbereds med NPM och Parcel.
 2. Projektets struktur skapas i form av nödvändiga kataloger och filer.
-3. Klientwebbplatsens grund med responsiv header och footer skapas med hjälp av HTML och CSS.
+3. Klientwebbplatsens grund med responsiv header med navigationslänkar och footer med information skapas med HTML och CSS.
+4. En fungerande och responsiv navigationsmeny för mobil skapas med CSS och JavaScript.
+5. Innehållet för startsidan, meny och besöksbetyg, hämtas från databasen via fetch-anrop och skrivs ut med JavaScript och stylas med CSS.
+6. Övrigt innehåll för startsidan så som information, bilder och hero i form av bildkarusell skapas med HTML och CSS.
+7. För besöksbetygen omvandlas de lagrade betygen från siffror till stjärnikoner med hjälp av en funktion i JavaScript.
+8. Innehållet på startsidan görs responsivt för olika typer av enheter.
+9. ...
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

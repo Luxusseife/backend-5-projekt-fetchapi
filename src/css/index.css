@@ -79,8 +79,14 @@ h1 {
     border: 5px solid #d4ae8e;
 }
 
-/* Sektionen för omdömen. */
-#score {
+/* Container för omdömes-slide. */
+.score-container {
+    margin-top: 1rem;
+    overflow: hidden;
+    background: #43332A;
+    white-space: nowrap;
+    margin: 4rem 2rem 2rem 2rem;
+    overflow: hidden;
     text-align: center;
 
     /* Bild. */
@@ -90,16 +96,6 @@ h1 {
         border: 5px solid #8ea178;
         margin-top: 2rem;
     }
-}
-
-/* Container för omdömes-slide. */
-.score-container {
-    margin-top: 1rem;
-    overflow: hidden;
-    background: #43332A;
-    white-space: nowrap;
-    margin: 4rem 2rem 2rem 2rem;
-    overflow: hidden;
 }
 
 /* Omdömes-slide. */
@@ -170,7 +166,7 @@ h1 {
     .img-carousel {
 
         img {
-            height: 500px;
+            height: 450px;
         }
     }
 

@@ -6,29 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GELATO AMARO | ADMIN</title>
 
-    <link rel="stylesheet" href="/src/css/base.css">
-    <link rel="stylesheet" href="/src/css/admin.css">
-    <script src="/src/js/mobile-nav.js" type="module"></script>
-    <script src="/src/js/admin.js" type="module"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="js/mobile-nav.js" type="module"></script>
+    <script src="js/admin.js" type="module"></script>
     <script src="https://kit.fontawesome.com/e49202e377.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="content" style="display: none;">
     <header>
         <a href="index.html"><img src="assets/logo.png" alt="logotyp"></a>
         <nav>
             <i id="mobile-menu" class="fa-solid fa-bars fa-2xl"></i>
             <ul id="mobile-links">
-                <li><a href="index.html">LOGGA UT</a></li>
+                <li><a href="index.html">HEM</a></li>
+                <li><a href="index.html" class="logout">LOGGA UT</a></li>
             </ul>
             <ul id="desktop-links">
-                <li><a href="index.html">LOGGA UT</a></li>
+                <li><a href="index.html">HEM</a></li>
+                <li><a href="index.html" class="logout">LOGGA UT</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="content">
-
+    <main>
+        <h1>ADMIN</h1>
     </main>
 
     <footer>
@@ -62,6 +64,9 @@
             <p>
                 <i class="fa-solid fa-user"></i>
                 <a href="login.html">Logga in</a>
+                <br>
+                <i class="fa-solid fa-user"></i>
+                <a href="admin.html">Hantera meny</a>
             </p>
         </div>
 

@@ -25,7 +25,9 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 8. Innehållet på startsidan stylas ytterligare och görs responsivt för olika typer av enheter.
 9. För inloggnings-sidan skapas och stylas innehåll i form av ett formulär i en inloggnings-ruta med HTML och CSS. 
 10. Funktionalitet för submit av formuläret med en knapp skapas med JavaScript. Här görs en kontroll av input innan en inloggningsfunktion körs där en JWT-token lagras i sessionStorage och en omdirigering görs till admin-gränssnittet.
-11. ...  
+11. Ett innehåll för den skyddade admin-sidan skapas med HTML och CSS. Här består navigationsmenyn endast av en länk till startsidan och en logga ut-knapp.
+12. Funktionalitet för att autentisera admin genom inhämtning av lagrad JWT-token samt en utloggnings-funktion skapas med JavaScript.
+13. ...
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

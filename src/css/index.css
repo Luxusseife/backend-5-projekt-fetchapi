@@ -172,6 +172,7 @@ h1 {
         height: 450px;
     }
 
+    /* Meny-container. */
     #menu {
         display: flex;
         flex-direction: column;
@@ -193,6 +194,7 @@ h1 {
         justify-items: center;
     }
 
+    /* Bild- och menytext-container. */
     .category {
         display: flex;
         flex-direction: column;
@@ -204,6 +206,7 @@ h1 {
         padding: 1rem;
     }
 
+    /* Kategori-bilder. */
     .category img {
         width: 100%;
         max-width: 450px;
@@ -212,6 +215,7 @@ h1 {
         border: 10px solid #d4ae8e;
     }
 
+    /* Rubriker. */
     .category h2,
     .category ul {
         width: 100%;
@@ -233,15 +237,16 @@ h1 {
         justify-content: center;
     }
 
+    /* Omdömen. */
     .score-container {
         margin: 5rem 10%;
     }
 
+    /* Sektionen för om oss. */
     .about-container {
         margin: 2rem 1rem;
     }
 
-    /* Bild. */
     .about-container img {
         border: 10px solid #8ea178;
     }

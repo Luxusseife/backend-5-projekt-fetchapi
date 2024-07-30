@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Visar text om i-bockad.
             if (passwordCheckbox.checked) {
                 passwordInput.type = "text";
-                // Osynligt lösenord om inte i-bockad (prickar). 
+            // Osynligt lösenord om inte i-bockad (prickar). 
             } else {
                 passwordInput.type = "password";
             }

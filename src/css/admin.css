@@ -1,0 +1,23 @@
+/* Rubrik. */
+h1 {
+    text-align: left;
+    font-size: 2em;
+    margin: 2rem 0 0 2rem;
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 769px) {
+
+    /* Rubrik. */
+    h1 {
+        text-align: center;
+        margin: 2rem 0;
+    }
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 1025px) {}
+
+@media (min-width: 1441px) {}
+
+@media (min-width: 1921px) {}

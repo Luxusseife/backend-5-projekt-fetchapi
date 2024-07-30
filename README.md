@@ -22,8 +22,10 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 5. Innehållet för startsidan, meny och besöksbetyg, hämtas från databasen via fetch-anrop och skrivs ut med JavaScript och stylas med CSS.
 6. Övrigt innehåll för startsidan så som information, bilder och hero i form av bildkarusell skapas med HTML och CSS.
 7. För besöksbetygen omvandlas de lagrade betygen från siffror till stjärnikoner med hjälp av en funktion i JavaScript.
-8. Innehållet på startsidan görs responsivt för olika typer av enheter.
-9. ...
+8. Innehållet på startsidan stylas ytterligare och görs responsivt för olika typer av enheter.
+9. För inloggnings-sidan skapas och stylas innehåll i form av ett formulär i en inloggnings-ruta med HTML och CSS. 
+10. Funktionalitet för submit av formuläret med en knapp skapas med JavaScript. Här görs en kontroll av input innan en inloggningsfunktion körs där en JWT-token lagras i sessionStorage och en omdirigering görs till admin-gränssnittet.
+11. ...  
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

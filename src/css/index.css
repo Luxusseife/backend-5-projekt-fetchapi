@@ -22,33 +22,32 @@ h1 {
 .img-carousel {
     display: inline-block;
     animation: 45s carousel infinite linear;
+}
 
-    /* Bilder. */
-    img {
-        height: 350px;
-    }
+/* Bilder inom bildkarusell. */
+.img-carousel img {
+    height: 350px;
 }
 
 /* Animation för bildkarusell. */
 @keyframes carousel {
     from {
-        transform: translateX(0)
+        transform: translateX(0);
     }
-
     to {
-        transform: translateX(-100%)
+        transform: translateX(-100%);
     }
 }
 
 /* Beskrivande text under bildkarusell. */
 #scroll-text {
-    margin: 3rem 0 7rem 0;
+    margin: 3rem 0.5rem 7rem 0.5rem;
     text-align: center;
     transition: opacity 0.5s ease;
+}
 
-    p {
-        font-size: 50px;
-    }
+#scroll-text p {
+    font-size: 50px;
 }
 
 /* Sektion för meny. */
@@ -56,12 +55,13 @@ h1 {
     text-align: left;
     line-height: 2;
     margin: 2rem;
+}
 
-    /* Glass-rubriker. */
-    h2 {
-        margin-top: 1rem;
-        color: #d4ae8e;
-    }
+/* Glass-rubriker inom menysektion. */
+#menu h2 {
+    margin-top: 1rem;
+    color: #d4ae8e;
+    text-align: left;
 }
 
 /* Glass-poster. */
@@ -74,28 +74,17 @@ h1 {
 .category img {
     width: 100%;
     max-width: 400px;
-    max-height: auto;
     margin-top: 1rem;
     border: 5px solid #d4ae8e;
 }
 
 /* Container för omdömes-slide. */
 .score-container {
-    margin-top: 1rem;
+    margin: 4rem 2rem 1rem 2rem;
     overflow: hidden;
     background: #43332A;
     white-space: nowrap;
-    margin: 4rem 2rem 2rem 2rem;
-    overflow: hidden;
     text-align: center;
-
-    /* Bild. */
-    img {
-        width: 100%;
-        max-width: 400px;
-        border: 5px solid #8ea178;
-        margin-top: 2rem;
-    }
 }
 
 /* Omdömes-slide. */
@@ -105,6 +94,20 @@ h1 {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     cursor: pointer;
+    border: 10px dotted #d4ae8e;
+    padding: 1rem;
+}
+
+/* Gör scrollbar mindre synlig för webbläsaren Firefox. */
+.score-slide {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff transparent;
+}
+
+/* Gör scrollbar mindre synlig för WebKit-baserade webbläsare. */
+.score-slide::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
 /* "Lista" med omdömen. */
@@ -124,11 +127,11 @@ h1 {
     margin-right: 1rem;
     border-radius: 5px;
     width: 200px;
+}
 
-    /* Betygs-text. */
-    p {
-        font-size: 20px;
-    }
+/* Betygs-text. */
+#score-list li p {
+    font-size: 20px;
 }
 
 /* Betygsstjärna, fylld. */
@@ -145,44 +148,84 @@ h1 {
 .about-container {
     line-height: 2;
     margin: 2rem;
+}
 
-    /* Brödtext. */
-    p {
-        max-width: 60ch;
-    }
+/* Brödtext. */
+.about-container p {
+    text-align: left;
+    max-width: 60ch;
+}
 
-    /* Bild. */
-    img {
-        width: 100%;
-        max-width: 400px;
-        border: 5px solid #8ea178;
-        margin-top: 2rem;
-    }
+/* Bild. */
+.about-container img {
+    width: 100%;
+    max-width: 400px;
+    border: 5px solid #8ea178;
+    margin-top: 2rem;
 }
 
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 
-    .img-carousel {
-
-        img {
-            height: 450px;
-        }
+    /* Bilderna i bildkarusellen blir större. */
+    .img-carousel img {
+        height: 450px;
     }
 
+    #menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #menu #desc {
+        margin-bottom: 2rem;
+    }
+
+    /* Menyn och bilderna läggs i två olika kolumner. */
     .menu-categories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 2rem;
         width: 100%;
+        text-align: center;
+        justify-items: center;
     }
 
     .category {
-
-        img {
-            width: 100%;
-            max-width: 500px;
-            margin: 5rem;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        width: 100%;
+        max-width: 450px;
+        padding: 1rem;
     }
 
+    .category img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        margin-bottom: 1rem;
+        border: 10px solid #d4ae8e;
+    }
+
+    .category h2,
+    .category ul {
+        width: 100%;
+        text-align: left;
+    }
+
+    #cat-1,
+    #cat-2,
+    #cat-3,
+    #cat-4 {
+        margin-bottom: 3rem;
+    }
+
+    /* Centrerar rubriker och containers. */
     h1,
     #menu,
     #score-list {
@@ -190,13 +233,17 @@ h1 {
         justify-content: center;
     }
 
-    .about-container {
-        line-height: 2;
-        margin: 2rem 1rem 2rem 1rem;
+    .score-container {
+        margin: 5rem 10%;
+    }
 
-        img {
-            max-width: 400px;
-        }
+    .about-container {
+        margin: 2rem 1rem;
+    }
+
+    /* Bild. */
+    .about-container img {
+        border: 10px solid #8ea178;
     }
 
     #about {
@@ -204,5 +251,36 @@ h1 {
         justify-content: center;
         text-align: center;
         margin-bottom: 3rem;
+    }
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 1025px) {
+    .menu-categories {
+        width: 80%;
+    }
+
+    .score-container {
+        margin: 2rem 15%;
+    }
+}
+
+@media (min-width: 1441px) {
+    .menu-categories {
+        width: 70%;
+    }
+
+    .score-container {
+        margin: 2rem 20%;
+    }
+}
+
+@media (min-width: 1921px) {
+    .menu-categories {
+        width: 40%;
+    }
+
+    .score-container {
+        margin: 2rem 25%;
     }
 }

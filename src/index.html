@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="/src/css/base.css">
     <link rel="stylesheet" href="/src/css/index.css">
-    <script src="/src/js/main.js" type="module"></script>
+    <script src="/src/js/mobile-nav.js" type="module"></script>
+    <script src="/src/js/index.js" type="module"></script>
     <script src="https://kit.fontawesome.com/e49202e377.js" crossorigin="anonymous"></script>
 </head>
 
@@ -59,11 +60,11 @@
         <section id="menu">
             <h1>MENY</h1>
 
-            <p>
+            <p id="desc">
                 Priserna gäller per kula.
             </p>
 
-            <div class="menu-categories">
+            <div class="menu-categories" id="cat-1">
                 <div class="category">
                     <img id="whisky" src="assets/alcohol.webp" alt="Whiskyflaska och glas">
                 </div>
@@ -74,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="menu-categories">
+            <div class="menu-categories" id="cat-2">
                 <div class="category">
                     <img id="coffee" src="assets/coffee.webp" alt="Hela och krossade kaffebönor">
                 </div>
@@ -85,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="menu-categories">
+            <div class="menu-categories" id="cat-3">
                 <div class="category">
                     <img id="lemons" src="assets/lemons.webp" alt="Citroner på tallrik">
                 </div>
@@ -96,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="menu-categories">
+            <div class="menu-categories" id="cat-4">
                 <div class="category">
                     <img id="cheese" src="assets/nutscheese.webp" alt="Oskalade och skalade pistagenötter">
                 </div>
@@ -115,8 +116,6 @@
                 <div class="score-slide">
                     <ul id="score-list"></ul>
                 </div>
-
-                <img id="icecream" src="assets/icecream4.webp" alt="Glass i våffla med nötter">
             </div>
         </section>
 

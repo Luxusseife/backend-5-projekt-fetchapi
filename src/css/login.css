@@ -1,0 +1,54 @@
+/* Inloggnings-ruta. */
+.form-container {
+    text-align: center;
+    max-width: 300px;
+    margin: 5rem auto 0 auto;
+    border: 5px solid #d4ae8e;
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+#login {
+    text-align: left;
+    margin-left: 0.9rem;
+}
+
+/* Höjd och bredd för alla input-fält */
+#login input {
+    height: 35px;
+    width: 200px;
+    border: none;
+    padding: 5px;
+}
+
+/* Specifik stil för checkbox. */
+#login input[type="checkbox"] {
+    height: auto; 
+    width: auto; 
+    margin-left: 5px;
+}
+
+#login p {
+    width: 200px;
+    color: #ffffff;
+    margin: 1rem 0;
+}
+
+/* Knapp för logga in. */
+#login button {
+    background-color: #d4ae8e;
+    color: #ffffff;
+    height: 45px;
+    width: 200px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        background-color: #d4ae8e;
+    }
+}

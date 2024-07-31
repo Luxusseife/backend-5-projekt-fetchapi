@@ -33,7 +33,7 @@ function checkInput(event) {
 async function loginAdmin(username, password) {
 
     // API-url.
-    const loginUrl = "http://127.0.0.1:3131/admin/login";
+    const loginUrl = "https://webbservice.onrender.com/admin/login";
 
     // AJAX-anrop med metoden POST.
     try {

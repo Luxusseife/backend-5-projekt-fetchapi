@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", getScores);
 // Funktion som hämtar lagrade glassar i menyn.
 async function getMenu() {
     // API-URL.
-    const getUrl = "http://127.0.0.1:3131/icecreams";
+    const getUrl = "https://backend-5-projekt-api.onrender.com/icecreams";
 
     // AJAX-anrop, loopar genom data och skriver ut till skärm.
     try {
@@ -39,7 +39,7 @@ async function getMenu() {
 // Funktion som hämtar lagrade omdömen.
 async function getScores() {
     // API-URL.
-    const getUrl = "http://127.0.0.1:3131/scores";
+    const getUrl = "https://backend-5-projekt-api.onrender.com/scores";
 
     // AJAX-anrop, loopar genom data och skriver ut till skärm.
     try {

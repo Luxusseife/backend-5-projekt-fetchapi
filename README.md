@@ -27,7 +27,8 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 10. Funktionalitet för submit av formuläret med en knapp skapas med JavaScript. Här görs en kontroll av input innan en inloggningsfunktion körs där en JWT-token lagras i sessionStorage och en omdirigering görs till admin-gränssnittet.
 11. Ett innehåll för den skyddade admin-sidan skapas med HTML och CSS. Här består navigationsmenyn endast av en länk till startsidan och en logga ut-knapp.
 12. Funktionalitet för att autentisera admin genom inhämtning av lagrad JWT-token samt en utloggnings-funktion skapas med JavaScript.
-13. ...
+13. Klientwebbplatsen med tillhörande admin-gränssnitt publiceras på Render och samtliga fetch-urls anges med Render-adressen som grund.
+14. ...
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

@@ -55,10 +55,11 @@
 /* Rubriker på startsidan. */
 #menu h2,
 #score h2,
-#about h2 {
+#about h2,
+#form-container h2 {
     text-align: left;
     font-size: 2em;
-    margin: 2rem 0 0 0;
+    margin: 1rem 0 0 0;
 }
 
 /* Glass-rubriker inom menysektion. */
@@ -85,70 +86,11 @@
     border: 5px solid #d4ae8e;
 }
 
-/* Container för omdömes-slide. */
-.score-container {
-    margin: 4rem 2rem 1rem 2rem;
-    overflow: hidden;
-    background: #43332A;
-    white-space: nowrap;
-    text-align: center;
-}
-
-/* Omdömes-slide. */
-.score-slide {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    cursor: pointer;
-    border: 10px dotted #d4ae8e;
-    padding: 1rem;
-}
-
-/* Gör scrollbar mindre synlig för webbläsaren Firefox. */
-.score-slide {
-    scrollbar-width: thin;
-    scrollbar-color: #ffffff transparent;
-}
-
-/* Gör scrollbar mindre synlig för WebKit-baserade webbläsare. */
-.score-slide::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-/* "Lista" med omdömen. */
-#score-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    list-style-type: none;
-    line-height: 2;
-}
-
-/* Listelement med stjärnor, namn och datum. */
-#score-list li {
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-    padding: 1rem;
-    margin-right: 1rem;
-    border-radius: 5px;
-    width: 200px;
-}
-
-/* Betygs-text. */
-#score-list li p {
-    font-size: 20px;
-}
-
-/* Betygsstjärna, fylld. */
-.full-star {
-    color: #d6b54c;
-}
-
-/* Betygsstjärna, tom. */
-.empty-star {
-    color: #c4c3c3;
+/* Sektion för "om oss". */
+#about {
+    background-color: #8ea178;
+    color: black;
+    padding: 1rem 0;
 }
 
 /* Container för "om oss". */
@@ -167,11 +109,158 @@
 .about-container img {
     width: 100%;
     max-width: 400px;
-    border: 5px solid #8ea178;
-    box-shadow: 3px 3px 10px #000000;
     margin-top: 2rem;
+    border: 5px solid #ffffff;
 }
 
+/* Sektion för besöksbetyg. */
+#score {
+    background-color:#d6b54c;
+    color: black;
+    padding: 1rem 0;
+}
+
+/* Container för besöksbetygs-slide. */
+.score-container {
+    margin: 2rem 2rem 1rem 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Besöksbetygs-slide. */
+.score-slide {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+/* Gör scrollbar mindre synlig för webbläsaren Firefox. */
+.score-slide {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff transparent;
+}
+
+/* Gör scrollbar mindre synlig för WebKit-baserade webbläsare. */
+.score-slide::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* "Lista" med besöksbetyg. */
+#score-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style-type: none;
+    line-height: 1.6;
+}
+
+/* Listelement med stjärnor, namn och datum. */
+#score-list li {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #43332A;
+    color: white;
+}
+
+/* Betygs-text. */
+#score-list li p {
+    font-size: 20px;
+}
+
+/* Betygsstjärna, fylld. */
+.full-star {
+    color: #d6b54c;
+}
+
+/* Betygsstjärna, tom. */
+.empty-star {
+    color: #c4c3c3;
+}
+
+/* Grundläggande styling för form-container. */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto;
+    max-width: 70ch;
+}
+
+.form-container h3 {
+    font-size: 1.5em;
+}
+
+.form-container p {
+    line-height: 1.6;
+    text-align: left;
+}
+
+#form {
+    text-align: left;
+}
+
+/* Input-fält styling. */
+#form input {
+    height: 35px;
+    width: 250px;
+    border: none;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+/* Specifik stil för radioknappar och etiketter. */
+#score-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+#score-radios input[type="radio"] {
+    height: 25px; 
+    width: 25px;
+    margin-top: 0.75rem;
+    cursor: pointer;
+}
+
+#score-radios label {
+    margin-top: 0.75rem;
+    margin-right: 1rem;
+}
+
+#form fieldset {
+    border: none;
+    font-weight: bold;
+}
+
+#form label {
+    font-weight: bold;
+}
+
+/* Knapp för att lämna besöksbetyg. */
+#form button {
+    background-color: #43332A;
+    color: white;
+    height: 45px;
+    width: 200px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        background-color: #8ea178;
+    }
+}
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 
@@ -198,7 +287,6 @@
     #about h2 {
         text-align: center;
         font-size: 2em;
-        margin: 2rem 0 0 0;
     }
 
     /* Menyn och bilderna läggs i två olika kolumner. */
@@ -255,25 +343,22 @@
         justify-content: center;
     }
 
-    /* Omdömen. */
+    /* Besöksbetyg. */
     .score-container {
-        margin: 5rem 10%;
+        margin: 2rem 10%;
     }
 
-    /* Sektionen för om oss. */
-    .about-container {
-        margin: 2rem 1rem;
+    .form-container h3 {
+        text-align: center;
+    }
+
+    .form-container {
+        text-align: center;
     }
 
     .about-container img {
-        border: 10px solid #8ea178;
-    }
-
-    #about {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 3rem;
+        border: 10px solid #f4f4f4;
+        box-shadow: 3px 3px 10px #000000;
     }
 }
 
@@ -281,6 +366,15 @@
 @media (min-width: 1025px) {
     .menu-categories {
         width: 80%;
+    }
+
+    .about-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+        justify-items: center;
+        align-items: center;
+        margin: 3rem 4rem;
     }
 
     .score-container {

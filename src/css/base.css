@@ -87,7 +87,7 @@ header {
 /* Main. */
 main {
     min-height: 74vh;
-    
+
     p {
         font-size: 18px;
     }
@@ -186,4 +186,12 @@ footer {
 /* Aktivt läge för mobil-menyn. */
 #mobile-links.active {
     top: 100%;
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 1921px) {
+
+    main p {
+        font-size: larger;
+    }
 }

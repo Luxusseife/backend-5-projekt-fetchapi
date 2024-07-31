@@ -24,13 +24,13 @@
             <ul id="mobile-links">
                 <li><a href="index.html">HEM</a></li>
                 <li><a href="#menu">MENY</a></li>
-                <li><a href="#score">OMDÖMEN</a></li>
+                <li><a href="#score">BESÖKSBETYG</a></li>
                 <li><a href="#about">OM OSS</a></li>
             </ul>
             <ul id="desktop-links">
                 <li><a href="index.html">HEM</a></li>
                 <li><a href="#menu">MENY</a></li>
-                <li><a href="#score">OMDÖMEN</a></li>
+                <li><a href="#score">BESÖKSBETYG</a></li>
                 <li><a href="#about">OM OSS</a></li>
             </ul>
         </nav>
@@ -50,7 +50,8 @@
                 <img src="assets/spices.webp" alt="Kryddor i olika skålar" style="border: 10px solid #8ea178">
                 <img src="assets/icecream3.webp" alt="Glass i våffla på en tallrik" style="border: 10px solid #d4ae8e">
                 <img src="assets/cranberry.webp" alt="Tranbär i en skål" style="border: 10px solid #b10c0e">
-                <img src="assets/chocolate.webp" alt="Chokladbitar byggda i ett torn" style="border: 10px solid #d6b54c">
+                <img src="assets/chocolate.webp" alt="Chokladbitar byggda i ett torn"
+                    style="border: 10px solid #d6b54c">
                 <img src="assets/icecream2.webp" alt="Glassar i våffla" style="border: 10px solid #d4ae8e">
                 <img src="assets/tea.webp" alt="Tepåsar hänger bredvid varandra" style="border: 10px solid #8ea178">
             </div>
@@ -104,42 +105,86 @@
             </div>
         </section>
 
+        <section id="about">
+            <div class="about-container">
+                <div>
+                    <h2>OM OSS</h2>
+
+                    <p>
+                        Grundaren till Gelato Amaro heter Anna Bianchi, en nyfiken individualist från Italien.
+                        Efter sin kockutbildning i Paris gjorde hon praktiskt taget en jorden runt-resa via
+                        varierande studier och arbeten som 2017 slutade med ett brinnande intresse för glass
+                        med smakinfluenser från hela världen.
+                        <br>
+                        <br>
+                        Med sina erfarenheter i ryggen tog hon med sig
+                        sina kreativa idéer in i köket för att med gräddglassen i fokus skapa, utveckla och
+                        experimentera med spännande ingredienser av noga utvalda råvaror av högsta kvalitet
+                        från världens alla hörn.
+                        <br>
+                        <br>
+                        Resultatet blev Gelato Amaro, som sedan 2020 är en självklar
+                        plats i Malmös kulturella och matmässiga mångfald där smakerna salt, surt och beskt
+                        harmoniskt och unikt kombineras med sötman från grädde. Samtliga glassrecept är
+                        otraditionellt lekfulla och överraskande nog avsedda för mer vuxna smaklökar.
+                        Ett vinnande koncept, för du blir aldrig för gammal för att gilla glass!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="assets/Anna.webp" loading="lazy" alt="Grundaren Anna Bianchi plockar plommon">
+                </div>
+            </div>
+        </section>
 
         <section id="score">
             <div class="score-container">
-                <h2>OMDÖMEN</h2>
+                <h2>BESÖKSBETYG</h2>
                 <br>
                 <div class="score-slide">
                     <ul id="score-list"></ul>
                 </div>
             </div>
-        </section>
 
-        <section id="about">
-            <div class="about-container">
-                <h2>OM OSS</h2>
-
-                <p>
-                    Grundaren till Gelato Amaro heter Anna Bianchi, en nyfiken individualist från Italien.
-                    Efter sin kockutbildning i Paris gjorde hon praktiskt taget en jorden runt-resa via
-                    varierande studier och arbeten som 2017 slutade med ett brinnande intresse för glass
-                    med smakinfluenser från hela världen.
+            <div class="form-container">
+                <div class="score-text">
+                    <h3>LÄMNA ETT BETYG</h3>
                     <br>
-                    <br>
-                    Med sina erfarenheter i ryggen tog hon med sig
-                    sina kreativa idéer in i köket för att med gräddglassen i fokus skapa, utveckla och
-                    experimentera med spännande ingredienser av noga utvalda råvaror av högsta kvalitet
-                    från världens alla hörn.
-                    <br>
-                    <br>
-                    Resultatet blev Gelato Amaro, som sedan 2020 är en självklar
-                    plats i Malmös kulturella och matmässiga mångfald där smakerna salt, surt och beskt
-                    harmoniskt och unikt kombineras med sötman från grädde. Samtliga glassrecept är
-                    otraditionellt lekfulla och överraskande nog avsedda för mer vuxna smaklökar.
-                    Ett vinnande koncept, för du blir aldrig för gammal för att gilla glass!
-                </p>
-
-                <img src="assets/Anna.webp" loading="lazy" alt="Grundaren Anna Bianchi plockar plommon">
+                    <p>
+                        Har du besökt oss och vill dela med dig av din upplevelse? Här finns möjlighet
+                        att lämna ett besöksbetyg som andra besökare kan se.
+                        <br>
+                        <br>
+                        Stort tack för din tid!
+                    </p>
+                </div>
+                <div class="score-form">
+                    <form id="form" method="post" action="#">
+                        <br>
+                        <label for="name">Namn:</label>
+                        <br>
+                        <input type="text" id="name" name="name" placeholder="Ditt namn">
+                        <br>
+                        <br>
+                        <fieldset id="score-radios">
+                            <legend>Besöksbetyg:</legend>
+                            <input type="radio" id="score1" name="score" value="1">
+                            <label for="score1">1</label>
+                            <input type="radio" id="score2" name="score" value="2">
+                            <label for="score2">2</label>
+                            <input type="radio" id="score3" name="score" value="3">
+                            <label for="score3">3</label>
+                            <input type="radio" id="score4" name="score" value="4">
+                            <label for="score4">4</label>
+                            <input type="radio" id="score5" name="score" value="5">
+                            <label for="score5">5</label>
+                        </fieldset>
+                        <br>
+                        <p id="error-container"></p>
+                        <br>
+                        <button type="submit">Lämna omdöme</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

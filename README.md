@@ -28,8 +28,8 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 11. Ett innehåll för den skyddade admin-sidan skapas med HTML och CSS. Här består navigationsmenyn endast av en länk till startsidan och en logga ut-knapp.
 12. Funktionalitet för att autentisera admin genom inhämtning av lagrad JWT-token samt en utloggnings-funktion skapas med JavaScript.
 13. Klientwebbplatsen med tillhörande admin-gränssnitt publiceras på Render och samtliga fetch-urls anges med Render-adressen som grund.
-14. Den publicerade klientwebbplatsen testas i PageSpeed Insights, med Wave Evaluation Tool och med hjälp av W3Cs valideringssida. 
-15. ... 
+14. Den publicerade klientwebbplatsen testas för första gången i PageSpeed Insights, med Wave Evaluation Tool och med hjälp av W3Cs valideringssida och nödvändiga åtgärdes görs.
+15. Ett formulär för att skicka in besöksbetyg skapas och stylas med HTML och CSS på startsidan. Funktionalitet för formuläret...
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

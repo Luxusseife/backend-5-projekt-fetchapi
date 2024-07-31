@@ -5,6 +5,12 @@ h1 {
     margin: 2rem 0 0 2rem;
 }
 
+/* Bakgrundsmönster. */
+main {
+    background-image: url(../assets/background.png);
+    background-repeat: repeat;
+}
+
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 

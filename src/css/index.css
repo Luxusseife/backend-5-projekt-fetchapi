@@ -20,6 +20,7 @@
 /* Bilder inom bildkarusell. */
 .img-carousel img {
     height: 350px;
+    margin: 0.25rem;
 }
 
 /* Animation för bildkarusell. */
@@ -52,19 +53,22 @@
 }
 
 /* Rubriker på startsidan. */
-#menu h1,
-#score h1,
-#about h1 {
+#menu h2,
+#score h2,
+#about h2 {
     text-align: left;
     font-size: 2em;
     margin: 2rem 0 0 0;
 }
 
 /* Glass-rubriker inom menysektion. */
-#menu h2 {
-    margin-top: 1rem;
+#menu h3 {
+    font-size: 1.5em;
     color: #d4ae8e;
-    text-align: left;
+}
+
+#menu h4 {
+    font-size: 1.2em;
 }
 
 /* Glass-poster. */
@@ -164,6 +168,7 @@
     width: 100%;
     max-width: 400px;
     border: 5px solid #8ea178;
+    box-shadow: 3px 3px 10px #000000;
     margin-top: 2rem;
 }
 
@@ -188,9 +193,9 @@
     }
 
     /* Rubriker på startsidan. */
-    #menu h1,
-    #score h1,
-    #about h1 {
+    #menu h2,
+    #score h2,
+    #about h2 {
         text-align: center;
         font-size: 2em;
         margin: 2rem 0 0 0;
@@ -223,12 +228,13 @@
         width: 100%;
         max-width: 450px;
         height: auto;
-        margin-bottom: 1rem;
-        border: 10px solid #d4ae8e;
+        margin-bottom: 1rem;  
+        border: 10px solid #d4ae8e; 
+        box-shadow: 3px 3px 10px #000000;
     }
 
     /* Rubriker. */
-    .category h2,
+    .category h3,
     .category ul {
         width: 100%;
         text-align: left;
@@ -242,7 +248,7 @@
     }
 
     /* Centrerar rubriker och containers. */
-    h1,
+    h2,
     #menu,
     #score-list {
         text-align: center;

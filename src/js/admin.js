@@ -1,3 +1,5 @@
+"use strict";
+
 // Funktion för att kontrollera om admin är inloggad.
 function adminLoggedIn() {
     const token = sessionStorage.getItem("authToken");

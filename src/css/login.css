@@ -5,11 +5,16 @@
     margin: 5rem auto 0 auto;
     border: 5px solid #d4ae8e;
     padding: 2rem;
+    box-shadow: 3px 3px 10px black;
 }
 
 /* Rubrik. */
 h1 {
     margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 22px;
 }
 
 /* Formulär. */

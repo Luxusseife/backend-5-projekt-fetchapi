@@ -1,3 +1,5 @@
+"use strict";
+
 // Händelselyssnare på logga in-knappen.
 const loginForm = document.getElementById("login");
 loginForm.addEventListener("submit", checkInput);

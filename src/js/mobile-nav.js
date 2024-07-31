@@ -1,3 +1,5 @@
+"use strict";
+
 // Mobil-meny.
 document.addEventListener("DOMContentLoaded", function () {
     // Hämtar in hamburgerikonen för mobilmeny, länk-listan och länkarna.

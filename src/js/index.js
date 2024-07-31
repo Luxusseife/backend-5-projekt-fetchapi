@@ -1,3 +1,5 @@
+"use strict";
+
 // Händelselyssnare för hela sidan, kör funktionerna getMenu och getScores direkt.
 document.addEventListener("DOMContentLoaded", getMenu);
 document.addEventListener("DOMContentLoaded", getScores);
@@ -27,7 +29,7 @@ async function getMenu() {
             // Skapar ett listelement för varje glass.
             const icecreamItem = document.createElement("li");
             icecreamItem.innerHTML = `
-                <h3>${icecream.name}</h3>
+                <h4>${icecream.name}</h4>
                 <p>${icecream.description}</p>
                 <p>${icecream.price}</p>
                 `;

@@ -14,8 +14,15 @@ async function getMenu() {
 
         // Loopar genom glassar och lägger dem i rätt kategori-div.
         data.menu.forEach(icecream => {
+            // Normaliserar kategorinamnet.
+            const categoryId = icecream.category
+                // Konverterar till gemener.
+                .toLowerCase()
+                // Ersätter mellanslag och specialtecken med bindestreck.
+                .replace(/[^a-z0-9åäö]+/g, '-');
+
             // Hittar div-elementet för glassens kategori.
-            const categoryDiv = document.getElementById(icecream.category.toLowerCase());
+            const categoryDiv = document.getElementById(categoryId);
 
             // Skapar ett listelement för varje glass.
             const icecreamItem = document.createElement("li");
@@ -23,14 +30,14 @@ async function getMenu() {
                 <h3>${icecream.name}</h3>
                 <p>${icecream.description}</p>
                 <p>${icecream.price}</p>
-            `;
+                `;
 
             // Lägger till listelementet i rätt kategori-div.
             const list = categoryDiv.querySelector(".icecream-list");
             list.appendChild(icecreamItem);
         });
 
-    // Felmeddelande.
+        // Felmeddelande.
     } catch (error) {
         console.log("Fetch failed. This message was created:", error);
     }
@@ -68,7 +75,7 @@ async function getScores() {
             // Skapar ett listelement för varje omdöme.
             const scoreItem = document.createElement("li");
             scoreItem.innerHTML = `
-                <h3>${stars}</h3>
+                <p>${stars}</p>
                 <p>${score.name}</p>
                 <p>${formattedDate}</p>
             `;
@@ -77,7 +84,7 @@ async function getScores() {
             scoreListEl.appendChild(scoreItem);
         });
 
-    // Felmeddelande.
+        // Felmeddelande.
     } catch (error) {
         console.log("Fetch failed. This message was created:", error);
     }
@@ -103,7 +110,7 @@ function createStars(score) {
 }
 
 // Händelselyssnare för text som försvinner vid scroll.
-document.addEventListener("scroll", function() {
+document.addEventListener("scroll", function () {
     const scrollText = document.getElementById("scroll-text");
 
     // Villkor; vid scroll neråt försvinner texten, annars syns den.

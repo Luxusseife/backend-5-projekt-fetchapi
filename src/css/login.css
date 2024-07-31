@@ -36,7 +36,6 @@ h1 {
 
 #login p {
     width: 200px;
-    color: #d6b54c;
     margin: 1rem 0;
 }
 
@@ -54,5 +53,6 @@ h1 {
 
     &:hover {
         background-color: #d4ae8e;
+        border: 5px solid #ffffff;
     }
 }

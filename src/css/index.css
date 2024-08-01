@@ -45,6 +45,33 @@
     font-size: 40px;
 }
 
+/* Sektion för "om oss". */
+#about {
+    background-color: #8ea178;
+    color: black;
+    padding: 1rem 0;
+}
+
+/* Container för "om oss". */
+.about-container {
+    line-height: 2;
+    margin: 2rem;
+}
+
+/* Brödtext. */
+.about-container p {
+    text-align: left;
+    max-width: 60ch;
+}
+
+/* Bild. */
+.about-container img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 2rem;
+    border: 5px solid #ffffff;
+}
+
 /* Sektion för meny. */
 #menu {
     text-align: left;
@@ -84,33 +111,6 @@
     max-width: 400px;
     margin-top: 1rem;
     border: 5px solid #d4ae8e;
-}
-
-/* Sektion för "om oss". */
-#about {
-    background-color: #8ea178;
-    color: black;
-    padding: 1rem 0;
-}
-
-/* Container för "om oss". */
-.about-container {
-    line-height: 2;
-    margin: 2rem;
-}
-
-/* Brödtext. */
-.about-container p {
-    text-align: left;
-    max-width: 60ch;
-}
-
-/* Bild. */
-.about-container img {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 2rem;
-    border: 5px solid #ffffff;
 }
 
 /* Sektion för besöksbetyg. */
@@ -186,7 +186,7 @@
     color: #c4c3c3;
 }
 
-/* Grundläggande styling för form-container. */
+/* Grundläggande styling för form-container och text. */
 .form-container {
     display: flex;
     flex-direction: column;
@@ -203,11 +203,12 @@
     text-align: left;
 }
 
+/* Formulär. */
 #form {
     text-align: left;
 }
 
-/* Input-fält styling. */
+/* Input-fält i formuläret. */
 #form input {
     height: 35px;
     width: 250px;
@@ -236,6 +237,7 @@
     margin-right: 1rem;
 }
 
+/* Fieldset i formuläret. */
 #form fieldset {
     border: none;
     font-weight: bold;
@@ -257,16 +259,28 @@
     cursor: pointer;
     border: none;
 
+    /* Hover-effekt. */
     &:hover {
         background-color: #8ea178;
     }
 }
+
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 
     /* Bilderna i bildkarusellen blir större. */
     .img-carousel img {
         height: 450px;
+    }
+
+    #scroll-text h1 {
+        font-size: 50px;
+    }
+
+    /* "Om oss"-bild stylas ytterligare. */
+    .about-container img {
+        border: 10px solid #f4f4f4;
+        box-shadow: 3px 3px 10px #000000;
     }
 
     /* Meny-container. */
@@ -355,11 +369,6 @@
     .form-container {
         text-align: center;
     }
-
-    .about-container img {
-        border: 10px solid #f4f4f4;
-        box-shadow: 3px 3px 10px #000000;
-    }
 }
 
 /* Mediaquery för större skärmar. */
@@ -368,6 +377,11 @@
         width: 80%;
     }
 
+    #about {
+        margin-top: 5rem;
+    }
+
+    /* "Om oss"-delarna läggs i två kolumner. */
     .about-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

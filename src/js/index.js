@@ -39,7 +39,7 @@ async function getMenu() {
             list.appendChild(icecreamItem);
         });
 
-        // Felmeddelande.
+    // Felmeddelande.
     } catch (error) {
         console.log("Fetch failed. This message was created:", error);
     }
@@ -86,7 +86,7 @@ async function getScores() {
             scoreListEl.appendChild(scoreItem);
         });
 
-        // Felmeddelande.
+    // Felmeddelande.
     } catch (error) {
         console.log("Fetch failed. This message was created:", error);
     }
@@ -122,3 +122,76 @@ document.addEventListener("scroll", function () {
         scrollText.style.opacity = "1";
     }
 });
+
+// Händelselyssnare på lämna betyg-knappen.
+const scoreForm = document.getElementById("form");
+scoreForm.addEventListener("submit", checkInput);
+
+// Funktion för att visa olika meddelanden.
+function displayMessage(containerId, message) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = message;
+}
+
+// Kontrollerar input.
+function checkInput(event) {
+
+    // Hanterar default för submit vid formulär.
+    event.preventDefault();
+
+    // Hämtar in inputvärden.
+    const name = document.getElementById("name").value;
+    const scoreEl = document.querySelector('input[name="score"]:checked');
+    // Ternär operatör, scoreEl har antingen ett angivet värde eller inget angivet värde, dvs. null/undefined.
+    const score = scoreEl ? scoreEl.value : null;
+
+    // Rensar tidigare felmeddelanden.
+    displayMessage("error-container", "");
+
+    // Kontrollerar input, om namn och betyg ej är angivet visas fel.
+    if (!name || !score) {
+        // Visar ett felmeddelande till besökaren om att input saknas.
+        displayMessage("error-container", "Namn och betyg måste anges!");
+        // Koden exekveras inte vidare om input saknas.
+        return;
+    }
+
+    // Skickar med inputvärden till lagrings-funktion.
+    storeScore(name, score);
+}
+
+// Funktion som lagrar ett nytt besöksbetyg.
+async function storeScore(name, score) {
+
+    // API-url.
+    const scoreUrl = "https://webbservice.onrender.com/scores";
+
+    // AJAX-anrop med metoden POST.
+    try {
+        const response = await fetch(scoreUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, score })
+        });
+
+        // Villkor, om lagring lyckas.
+        if (response.ok) {
+            // Rensar formulär på inputvärden.
+            document.getElementById("form").reset();
+
+            // Visar ett meddelande om lyckad lagring.
+            displayMessage("success-container", "Ditt betyg har skickats in. Tack!");
+
+        // Felmeddelande om lagring misslyckas.
+        } else {
+            displayMessage("error-container", "Något gick fel när ditt betyg skickades. Prova igen!");
+        }
+
+    // Felmeddelande.
+    } catch (error) {
+        displayMessage("error-container", "Det uppstod ett fel vid lagringen: " + error.message);
+        console.error("Fel vid lagring: ", error);
+    }
+}

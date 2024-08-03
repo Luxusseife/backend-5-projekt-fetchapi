@@ -1,15 +1,195 @@
-/* Rubrik. */
+/* Rubriker och brödtext. */
 h1 {
-    text-align: left;
+    background-color: #43332A;
+    padding: 0 0 1rem 4.5rem;
+    color: #d4ae8e;
+}
+
+h2 {
+    margin: 2rem 0;
+}
+
+h3 {
+    margin: 5rem 0 3rem 0;
     font-size: 2em;
-    margin: 2rem 0 0 2rem;
+    text-decoration: underline;
+}
+
+h4 {
+    font-size: 1.4em;
+    margin: 0.5rem;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
 }
 
 /* Bakgrundsmönster. */
 main {
     background-image: url(../assets/background.png);
-    background-repeat: repeat;
+    background-attachment: fixed;
     min-height: 75vh;
+}
+
+/* Knapp-container. */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 3rem 0;
+}
+
+/* Knappar för att välja meny eller betyg. */
+#menu-button, 
+#score-button {
+    color: #ffffff;
+    height: 45px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    margin: 1rem;
+
+    /* Hover-effekt. */
+    &:hover {
+        font-size: 150%;
+    }
+}
+
+/* Olika färger på knapparna. */
+#menu-button {
+    background-color: #8ea178;
+}
+
+#score-button {
+    background-color: #d6b54c;
+}
+
+#menu {
+    text-align: center;
+    background-color: #43332A;
+    border: 5px solid #8ea178;
+    margin: 2rem;
+}
+
+/* Knapp för att skapa ny post i menyn. */
+#newIcecream {
+    background-color: #8ea178;
+    color: #ffffff;
+    height: 45px;
+    width: 200px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    margin: 3rem 0 0 0;
+
+    /* Hover-effekt. */
+    &:hover {
+        font-size: 150%;
+    }
+}
+
+/* Glass-poster. */
+.icecream-list li {
+    margin: 2rem 1rem;
+    list-style-type: none;
+    border-bottom: 2px solid #8ea178;
+}
+
+/* Knapp för att uppdatera en glass. */
+.editIcecream {
+    background-color: #d6b54c;
+    color: #ffffff;
+    height: 45px;
+    width: 200px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    margin: 1rem 1rem 0 1rem;
+
+    /* Hover-effekt. */
+    &:hover {
+        font-size: 150%;
+    }
+}
+
+/* Knapp för att radera glass eller betyg. */
+.eraseIcecream,
+.eraseScore {
+    background-color: #b10c0e;
+    color: #ffffff;
+    height: 45px;
+    width: 200px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    margin: 1rem 0;
+
+    /* Hover-effekt. */
+    &:hover {
+        font-size: 150%;
+    }
+}
+
+/* Radera-ikon. */
+.fa-solid {
+    margin-left: 1rem;
+}
+
+/* Aktiv knapp. */
+#menu-button.active-button, 
+#score-button.active-button {
+    border: 5px solid #ffffff;
+}
+
+/* Container för besöksbetygs. */
+.score-container {
+    background-color: #43332A;
+    border: 5px solid #d6b54c;
+    color: #ffffff;
+    margin: 2rem;
+    text-align: center;
+}
+
+/* "Lista" med besöksbetyg. */
+#score-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+    list-style-type: none;
+}
+
+/* Listelement med stjärnor, namn och datum. */
+#score-list li {
+    width: 200px;
+    background-color: #43332A;
+    margin: 1rem;
+    border-bottom: 2px solid #d6b54c;
+}
+
+/* Betygs-text. */
+#score-list li p {
+    font-size: 20px;
+}
+
+/* Betygsstjärna, fylld. */
+.full-star {
+    color: #d6b54c;
+}
+
+/* Betygsstjärna, tom. */
+.empty-star {
+    color: #c4c3c3;
 }
 
 /* Mediaquery för större skärmar. */

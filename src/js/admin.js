@@ -19,7 +19,7 @@ function checkAuthentication() {
 
 // Funktion som loggar ut en admin.
 function logoutAdmin(event) {
-    
+
     // Förhindrar default-omdirigering vid länk-klick.
     event.preventDefault();
 
@@ -30,11 +30,194 @@ function logoutAdmin(event) {
     window.location.href = "index.html";
 }
 
+// Funktion som hämtar lagrade glassar i menyn.
+async function getMenu() {
+    // API-URL.
+    const getUrl = "https://webbservice.onrender.com/icecreams";
+
+    // AJAX-anrop, loopar genom glassar och skriver ut till DOM.
+    try {
+        const response = await fetch(getUrl);
+        const data = await response.json();
+
+        // Rensar kategori-listorna innan nya glassar läggs till.
+        const categoryDivs = document.querySelectorAll(".icecream-list");
+        categoryDivs.forEach(div => {
+            div.innerHTML = '';
+        });
+
+        // Loopar genom glassar och lägger dem i rätt kategori-div.
+        data.menu.forEach(icecream => {
+            // Normaliserar kategorinamnet.
+            const categoryId = icecream.category
+                // Konverterar till gemener.
+                .toLowerCase()
+                // Ersätter mellanslag och specialtecken med bindestreck.
+                .replace(/[^a-zåäö]+/g, '-');
+
+            // Hittar div-elementet för glassens kategori.
+            const categoryDiv = document.getElementById(categoryId);
+
+            // Skapar ett listelement för varje glass inkl. knappar för uppdatera/radera.
+            const icecreamItem = document.createElement("li");
+            icecreamItem.innerHTML = `
+                <h4>${icecream.name}</h4>
+                <p>${icecream.description}</p>
+                <p>${icecream.price}</p>
+                <button class="editIcecream">UPPDATERA<i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="eraseIcecream" data-id="${icecream._id}">RADERA<i class="fa-solid fa-trash-can"></i></button>
+                `;
+
+            // Lägger till listelementet i rätt kategori-div.
+            const list = categoryDiv.querySelector(".icecream-list");
+            list.appendChild(icecreamItem);
+
+            // Lägger till händelselyssnare på samliga radera-knappar som anropar raderingsfunktion.
+            document.querySelectorAll(".eraseIcecream").forEach(button => {
+                button.addEventListener("click", eraseIcecream);
+            });
+        });
+
+    // Felmeddelande.
+    } catch (error) {
+        console.log("Fetch failed. This message was created:", error);
+    }
+}
+
+// Funktion som raderar en glass från menyn.
+async function eraseIcecream(event) {
+    // Hämtar ID för knappen/glassen.
+    const icecreamId = event.currentTarget.getAttribute('data-id');
+
+    // API-url med ID som endpoint.
+    const deleteUrl = `https://webbservice.onrender.com/icecreams/${icecreamId}`;
+
+    // AJAX-anrop med metoden DELETE.
+    try {
+        const response = await fetch(deleteUrl, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        // Villkor, om radering lyckas.
+        if (response.ok) {
+            // Visar en alert om lyckad radering och uppdaterar menyn.
+            alert("Glassen raderades!");
+            getMenu();
+
+        // Alert med felmeddelande om raderingen misslyckas.
+        } else {
+            alert("Något gick fel när glassen skulle raderas. Prova igen!");
+        }
+
+    // Felmeddelande.
+    } catch (error) {
+        console.error("Fel vid radering: ", error);
+        alert("Det uppstod ett fel vid raderingen: " + error.message);
+    }
+}
+
+// Funktion som hämtar lagrade besöksbetyg.
+async function getScores() {
+    // API-URL.
+    const getUrl = "https://webbservice.onrender.com/scores";
+
+    // AJAX-anrop, loopar genom besöksbetyg och skriver ut till DOM.
+    try {
+        const response = await fetch(getUrl);
+        const data = await response.json();
+
+        // Hämtar ul-elementet vari datan ska skrivas ut.
+        let scoreListEl = document.getElementById("score-list");
+
+        // Rensar listan innan ny data läggs till.
+        scoreListEl.innerHTML = "";
+
+        // Loopar genom besöksbetyg och skriver ut varje betyg för sig.
+        data.scores.forEach(score => {
+
+            // Skapar en "rubrik" med stjärnor för varje betyg.
+            const stars = createStars(score.score);
+
+            // Formaterar datumet till åå-mm-dd.
+            const date = new Date(score.date);
+            const formattedDate = date.toLocaleDateString('sv-SE', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+
+            // Skapar ett listelement för varje betyg inkl. knapp för att radera.
+            const scoreItem = document.createElement("li");
+            // Lägger till data-id för varje knapp för att kunna identifiera betygen.
+            scoreItem.innerHTML = `
+                <p>${stars}</p>
+                <p>${score.name}</p>
+                <p>${formattedDate}</p>
+                <button class="eraseScore" data-id="${score._id}">RADERA<i class="fa-solid fa-trash-can"></i></button>
+                `;
+
+            // Lägger till listelementen i listan.
+            scoreListEl.appendChild(scoreItem);
+
+            // Lägger till händelselyssnare på samliga radera-knappar som anropar raderingsfunktion.
+            document.querySelectorAll(".eraseScore").forEach(button => {
+                button.addEventListener("click", eraseScore);
+            });
+        });
+
+    // Felmeddelande.
+    } catch (error) {
+        console.log("Fetch failed. This message was created:", error);
+    }
+}
+
+// Funktion som raderar ett besöksbetyg.
+async function eraseScore(event) {
+    // Hämtar ID för knappen/betyget.
+    const scoreId = event.currentTarget.getAttribute('data-id');
+
+    // API-url med ID som endpoint.
+    const deleteUrl = `https://webbservice.onrender.com/scores/${scoreId}`;
+
+    // AJAX-anrop med metoden DELETE.
+    try {
+        const response = await fetch(deleteUrl, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        // Villkor, om radering lyckas.
+        if (response.ok) {
+            // Visar en alert om lyckad radering och uppdaterar listan.
+            alert("Betyget raderades!");
+            getScores();
+
+        // Alert med felmeddelande om radering misslyckas.
+        } else {
+            alert("Något gick fel när betyget skulle raderas. Prova igen!");
+        }
+
+    // Felmeddelande.
+    } catch (error) {
+        console.error("Fel vid radering: ", error);
+        alert("Det uppstod ett fel vid raderingen: " + error.message);
+    }
+}
+
 // Händelselyssnare vid sidladdning.
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Hämtar alla logga ut-knappar.
+    // Hämtar in knappar och sektioner.
     const logoutButton = document.querySelectorAll(".logout");
+    const menuButton = document.getElementById("menu-button");
+    const scoreButton = document.getElementById("score-button");
+    const menuSection = document.getElementById("menu");
+    const scoreSection = document.getElementById("score");
 
     // Lägger till händelselyssnare för varje logga ut-knapp.
     logoutButton.forEach(button => {
@@ -45,4 +228,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.endsWith("admin.html")) {
         checkAuthentication();
     }
+    
+    // Funktion för att visa och dölja sektioner.
+    function toggleSections(showSection, hideSection) {
+        showSection.style.display = "block";
+        hideSection.style.display = "none";
+    }
+
+    // Funktion för att hantera knappklick och tilldela aktiv klass.
+    function handleButtonClick(activeButton, inactiveButton) {
+        activeButton.classList.add("active-button");
+        inactiveButton.classList.remove("active-button");
+    }
+
+    // Händelselyssnare för MENY-knappen som anropar meny-funktionen.
+    menuButton.addEventListener("click", () => {
+        toggleSections(menuSection, scoreSection);
+        handleButtonClick(menuButton, scoreButton);
+        getMenu();
+    });
+
+    // Händelselyssnare för BETYG-knappen som anropar betygs-funktionen.
+    scoreButton.addEventListener("click", () => {
+        toggleSections(scoreSection, menuSection);
+        handleButtonClick(scoreButton, menuButton);
+        getScores();
+    });
 });
+
+// Funktion som skapar stjärn-ikoner baserat på betyget som angetts, 1-5.
+function createStars(score) {
+    // Börjar med tom sträng.
+    let stars = '';
+
+    // Loopar genom siffrorna 1 till 5 fem gånger.
+    for (let i = 1; i <= 5; i++) {
+        // Villkor; om i är mindre än eller lika med det angivna betyget lagras en full stjärna, annars en tom stjärna.
+        if (i <= score) {
+            stars += '<i class="fas fa-star full-star"></i>';
+        } else {
+            stars += '<i class="far fa-star empty-star"></i>';
+        }
+    }
+
+    // Returnerar en fylld sträng med stjärn-ikonerna.
+    return stars;
+}

@@ -33,7 +33,104 @@
     </header>
 
     <main>
+
         <h1>ADMIN</h1>
+
+        <div class="button-container">
+            <button id="menu-button">MENY</button>
+            <button id="score-button">BETYG</button>
+        </div>
+
+        <section id="menu" style="display: none;">
+
+            <button id="newIcecream">SKAPA NY</button>
+
+            <form id="createForm" method="post" action="#" style="display: none;">
+                <br>
+                <label for="name">Namn:</label>
+                <br>
+                <input type="text" id="name" name="name" placeholder="Vad heter glassen?">
+                <br>
+                <br>
+                <label for="category">Kategori:</label>
+                <select name="category" id="category">
+                    <option value="alkohol">Alkohol</option>
+                    <option value="kaffe-och-choklad">Kaffe och choklad</option>
+                    <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
+                    <option value="nötter-och-ost">Nötter och ost</option>
+                </select>
+                <br>
+                <label for="description">Beskrivning:</label>
+                <br>
+                <input type="text" id="description" name="description" placeholder="Vad är det för glass?">
+                <br>
+                <br>
+                <label for="price">Pris:</label>
+                <br>
+                <input type="text" id="price" name="price" placeholder="Vad kostar en kula?">
+                <br>
+                <p id="error-container"></p>
+                <button type="submit">Lägg till</button>
+            </form>
+
+            <form id="updateForm" method="put" action="#" style="display: none;">
+                <br>
+                <label for="name">Namn:</label>
+                <br>
+                <input type="text" id="name" name="name" placeholder="">
+                <br>
+                <br>
+                <label for="category">Kategori:</label>
+                <select name="category" id="category">
+                    <option value="alkohol">Alkohol</option>
+                    <option value="kaffe-och-choklad">Kaffe och choklad</option>
+                    <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
+                    <option value="nötter-och-ost">Nötter och ost</option>
+                </select>
+                <br>
+                <label for="description">Beskrivning:</label>
+                <br>
+                <input type="text" id="description" name="description" placeholder="">
+                <br>
+                <br>
+                <label for="price">Pris:</label>
+                <br>
+                <input type="text" id="price" name="price" placeholder="">
+                <br>
+                <p id="error-container"></p>
+                <button type="submit">Lägg till</button>
+            </form>
+
+            <div id="alkohol" class="category">
+                <h3>ALKOHOL</h3>
+                <ul class="icecream-list"></ul>
+            </div>
+
+            <div id="kaffe-och-choklad" class="category">
+                <h3>KAFFE OCH CHOKLAD</h3>
+                <ul class="icecream-list"></ul>
+            </div>
+
+            <div id="bär-citrus-och-kryddor" class="category">
+                <h3>BÄR, CITRUS OCH KRYDDOR</h3>
+                <ul class="icecream-list"></ul>
+            </div>
+
+            <div id="nötter-och-ost" class="category">
+                <h3>NÖTTER OCH OST</h3>
+                <ul class="icecream-list"></ul>
+            </div>
+        </section>
+
+        <section id="score" style="display: none;">
+            <div class="score-container">
+                <h2>BESÖKSBETYG</h2>
+                <br>
+                <ul id="score-list"></ul>
+            </div>
+
+            <p id="message-container"></p>
+        </section>
     </main>
 
     <footer>

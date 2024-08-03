@@ -21,7 +21,7 @@ async function getMenu() {
                 // Konverterar till gemener.
                 .toLowerCase()
                 // Ersätter mellanslag och specialtecken med bindestreck.
-                .replace(/[^a-z0-9åäö]+/g, '-');
+                .replace(/[^a-zåäö]+/g, '-');
 
             // Hittar div-elementet för glassens kategori.
             const categoryDiv = document.getElementById(categoryId);
@@ -185,8 +185,10 @@ async function storeScore(name, score) {
             displayMessage("success-container", "Ditt betyg har skickats in. Tack!");
 
         // Felmeddelande om lagring misslyckas.
-        } else {
-            displayMessage("error-container", "Något gick fel när ditt betyg skickades. Prova igen!");
+        } else if (response.status === 400) {
+            // Hämtar och visar felmeddelandet från servern.
+            const statusError = await response.json();
+            displayMessage("error-container", statusError.error || "Något gick fel när ditt betyg skickades. Prova igen!");
         }
 
     // Felmeddelande.

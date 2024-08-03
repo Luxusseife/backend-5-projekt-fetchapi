@@ -86,7 +86,6 @@
 #form-container h2 {
     text-align: left;
     font-size: 2em;
-    margin: 1rem 0 0 0;
 }
 
 /* Glass-rubriker inom menysektion. */
@@ -115,7 +114,7 @@
 
 /* Sektion för besöksbetyg. */
 #score {
-    background-color:#d6b54c;
+    background-color: #d6b54c;
     color: black;
     padding: 1rem 0;
 }
@@ -190,12 +189,13 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    margin: 3rem auto;
+    margin: 2rem 0 2rem 2rem;
     max-width: 70ch;
 }
 
 .form-container h3 {
     font-size: 1.5em;
+    margin-top: 1rem;
 }
 
 .form-container p {
@@ -226,7 +226,7 @@
 }
 
 #score-radios input[type="radio"] {
-    height: 25px; 
+    height: 25px;
     width: 25px;
     margin-top: 0.75rem;
     cursor: pointer;
@@ -261,7 +261,7 @@
 
     /* Hover-effekt. */
     &:hover {
-        background-color: #8ea178;
+        font-size: 150%;
     }
 }
 
@@ -279,7 +279,7 @@
 
     /* "Om oss"-bild stylas ytterligare. */
     .about-container img {
-        border: 10px solid #f4f4f4;
+        border: 10px solid #43332A;
         box-shadow: 3px 3px 10px #000000;
     }
 
@@ -299,7 +299,7 @@
     #menu h2,
     #score h2,
     #about h2 {
-        text-align: center;
+        text-align: left;
         font-size: 2em;
     }
 
@@ -330,8 +330,8 @@
         width: 100%;
         max-width: 450px;
         height: auto;
-        margin-bottom: 1rem;  
-        border: 10px solid #d4ae8e; 
+        margin-bottom: 1rem;
+        border: 10px solid #d4ae8e;
         box-shadow: 3px 3px 10px #000000;
     }
 
@@ -359,11 +359,11 @@
 
     /* Besöksbetyg. */
     .score-container {
-        margin: 2rem 10%;
+        margin: 2rem;
     }
 
     .form-container h3 {
-        text-align: center;
+        text-align: left;
     }
 
     .form-container {
@@ -377,8 +377,30 @@
         width: 80%;
     }
 
+    #menu h2 {
+        margin-top: 2rem;
+    }
+
+    /* Rubriker på startsidan. */
+    #menu h2,
+    #score h2,
+    #about h2 {
+        text-align: center;
+        font-size: 2em;
+    }
+
     #about {
-        margin-top: 5rem;
+        background-color: #43332A;
+        border: 10px solid #8ea178;
+        color: #ffffff;
+        margin: 5rem 5rem 0 5rem;
+    }
+
+    /* "Om oss"-bild stylas ytterligare. */
+    .about-container img {
+        border: 10px solid #8ea178;
+        box-shadow: 3px 3px 10px #000000;
+        margin: 1rem;
     }
 
     /* "Om oss"-delarna läggs i två kolumner. */
@@ -391,8 +413,44 @@
         margin: 3rem 4rem;
     }
 
+    #menu {
+        background-color: #43332A;
+        border: 10px solid #d4ae8e;
+        color: #ffffff;
+        margin: 2rem 5rem;
+    }
+
+    /* Sektion för besöksbetyg. */
+    #score {
+        background-color: #43332A;
+        border: 10px solid #d6b54c;
+        color: #ffffff;
+        margin: 2rem 5rem;
+    }
+
     .score-container {
         margin: 2rem 15%;
+    }
+
+    #score-list li {
+        border: 5px solid #d6b54c;
+    }
+
+    /* Grundläggande styling för form-container och text. */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem auto;
+        max-width: 70ch;
+    }
+
+    .form-container h3 {
+        text-align: center;
+    }
+
+    /* Knapp för att lämna besöksbetyg. */
+    #form button {
+        background-color: #d6b54c;
     }
 }
 
@@ -407,8 +465,15 @@
 }
 
 @media (min-width: 1921px) {
+
+    #about,
+    #menu,
+    #score {
+        margin: 5rem 20rem;
+    }
+
     .menu-categories {
-        width: 40%;
+        width: 50%;
     }
 
     .score-container {

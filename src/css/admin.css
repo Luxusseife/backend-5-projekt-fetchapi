@@ -9,7 +9,7 @@ h2 {
     margin: 2rem 0;
 }
 
-h3 {
+#menu h3 {
     margin: 5rem 0 3rem 0;
     font-size: 2em;
     text-decoration: underline;
@@ -30,6 +30,7 @@ main {
     background-image: url(../assets/background.png);
     background-attachment: fixed;
     min-height: 75vh;
+    padding-bottom: 3rem;
 }
 
 /* Knapp-container. */
@@ -41,7 +42,7 @@ main {
 }
 
 /* Knappar för att välja meny eller betyg. */
-#menu-button, 
+#menu-button,
 #score-button {
     color: #000000;
     height: 45px;
@@ -52,6 +53,7 @@ main {
     cursor: pointer;
     border: none;
     margin: 1rem;
+    transition: font-size 0.3s;
 
     /* Hover-effekt. */
     &:hover {
@@ -88,6 +90,7 @@ main {
     cursor: pointer;
     border: none;
     margin: 3rem 0 0 0;
+    transition: font-size 0.3s;
 
     /* Hover-effekt. */
     &:hover {
@@ -95,7 +98,8 @@ main {
     }
 }
 
-.form-container  {
+/* Formulär-container. */
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,11 +107,13 @@ main {
     margin: 0 1rem;
 }
 
+/* Rubriker i formulär. */
 #createForm h2,
 #updateForm h2 {
     margin: 3rem 0 0 0;
 }
 
+/* Inputfält och labels. */
 #createForm input,
 #createForm label,
 #updateForm input,
@@ -134,6 +140,7 @@ main {
     font-family: 'Glacial Indifference', sans-serif;
 }
 
+/* Formulärtext-container. */
 .formText {
     text-align: left;
 }
@@ -143,12 +150,13 @@ main {
 .cancel-button {
     color: #000000;
     height: 45px;
-    width: 105px;
+    width: 100%;
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     border: none;
     margin-top: 1rem;
+    transition: font-size 0.3s;
 
     /* Hover-effekt. */
     &:hover {
@@ -165,6 +173,7 @@ main {
     background-color: #d6b54c;
 }
 
+/* Containers för meddelande och fel. */
 #create-errors,
 #update-errors {
     margin-top: 1rem;
@@ -182,13 +191,14 @@ main {
     background-color: #d6b54c;
     color: #000000;
     height: 45px;
-    width: 200px;
+    width: 100%;
     font-size: 22px;
     font-weight: bold;
     padding: 5px 10px;
     cursor: pointer;
     border: none;
     margin-top: 1rem;
+    transition: font-size 0.3s;
 
     /* Hover-effekt. */
     &:hover {
@@ -201,13 +211,14 @@ main {
 .eraseScore {
     background-color: #b10c0e;
     color: #ffffff;
-    width: 200px;
+    width: 100%;
     height: 45px;
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     border: none;
     margin: 1rem 0;
+    transition: font-size 0.3s;
 
     /* Hover-effekt. */
     &:hover {
@@ -221,7 +232,7 @@ main {
 }
 
 /* Aktiv knapp. */
-#menu-button.active-button, 
+#menu-button.active-button,
 #score-button.active-button {
     border: 5px solid #ffffff;
 }
@@ -268,27 +279,73 @@ main {
 }
 
 /* Mediaquery för större skärmar. */
-@media (min-width: 426px) {
+@media (min-width: 600px) {
 
-    #createForm,
-    #updateForm {
-        max-width: 500px;
+    /* Besöksbetygs-listan flexas och wrappas. */
+    #score-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        line-height: 1.6;
+        list-style-type: none;
+    }
+
+    /* Border tas bort. */
+    #score-list li {
+        border-bottom: none;
     }
 }
 
 /* Mediaquery för större skärmar. */
 @media (min-width: 769px) {
 
-    /* Rubrik. */
+    /* Rubriker. */
     h1 {
+        text-align: left;
+    }
+    
+    #menu h3 {
+        margin: 5rem 0 0 0;
+    }
+
+    /* Glass-poster flexas och wrappas. */
+    .icecream-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        margin: 2rem 0;
+    }
+
+    /* Fast höjd och bredd på glassposterna. */
+    .icecream-list li {
+        list-style-type: none;
+        border-bottom: none;
+        width: 300px;
+        height: 350px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+        padding: 1rem;
     }
 }
 
 /* Mediaquery för större skärmar. */
-@media (min-width: 1025px) {}
+@media (min-width: 1025px) {
 
-@media (min-width: 1441px) {}
+    /* Margin ändras. */
+    .score-container,
+    #menu {
+        margin: 2rem 5rem;
+    }
+}
 
-@media (min-width: 1921px) {}
+@media (min-width: 1921px) {
+
+    /* Margin ändras. */
+    .score-container,
+    #menu {
+        margin: 5rem 30rem;
+    }
+}

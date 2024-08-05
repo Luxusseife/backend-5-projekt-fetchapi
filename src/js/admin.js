@@ -30,7 +30,7 @@ function logoutAdmin(event) {
     window.location.href = "index.html";
 }
 
-// Funktion som hämtar lagrade glassar i menyn.
+// Funktion som hämtar hela menyn med glassar.
 async function getMenu() {
     // API-URL.
     const getUrl = "https://webbservice.onrender.com/icecreams";
@@ -43,7 +43,7 @@ async function getMenu() {
         // Rensar kategori-listorna innan nya glassar läggs till.
         const categoryDivs = document.querySelectorAll(".icecream-list");
         categoryDivs.forEach(div => {
-            div.innerHTML = '';
+            div.innerHTML = "";
         });
 
         // Loopar genom glassar och lägger dem i rätt kategori-div.
@@ -53,13 +53,14 @@ async function getMenu() {
                 // Konverterar till gemener.
                 .toLowerCase()
                 // Ersätter mellanslag och specialtecken med bindestreck.
-                .replace(/[^a-zåäö]+/g, '-');
+                .replace(/[^a-zåäö]+/g, "-");
 
             // Hittar div-elementet för glassens kategori.
             const categoryDiv = document.getElementById(categoryId);
 
             // Skapar ett listelement för varje glass inkl. knappar för uppdatera/radera.
             const icecreamItem = document.createElement("li");
+            // Lägger till data-id på knappar för att kunna identifiera knapp/glass.
             icecreamItem.innerHTML = `
                 <h4>${icecream.name}</h4>
                 <p>${icecream.description}</p>
@@ -71,11 +72,11 @@ async function getMenu() {
             // Lägger till listelementet i rätt kategori-div.
             const list = categoryDiv.querySelector(".icecream-list");
             list.appendChild(icecreamItem);
+        });
 
-            // Lägger till händelselyssnare på samliga radera-knappar som anropar raderingsfunktion.
-            document.querySelectorAll(".eraseIcecream").forEach(button => {
-                button.addEventListener("click", eraseIcecream);
-            });
+        // Lägger till händelselyssnare på samliga radera-knappar som anropar raderingsfunktion.
+        document.querySelectorAll(".eraseIcecream").forEach(button => {
+            button.addEventListener("click", eraseIcecream);
         });
 
     // Felmeddelande.
@@ -84,10 +85,83 @@ async function getMenu() {
     }
 }
 
+// Funktion som skapar och lägger till en ny glass med inbyggd input-kontroll.
+async function createIcecream() {
+
+    // Hämtar in formulär och container för felmeddelande.
+    const createForm = document.getElementById("createForm");
+    const errorContainer = document.querySelectorAll("error-container");
+
+    // Lägger en händelselyssnare på submit-knappen i formuläret.
+    createForm.addEventListener("submit", async function (event) {
+
+        // Förhindrar default-beteende.
+        event.preventDefault();
+
+        // Hämtar in inputvärden.
+        const name = document.getElementById("create-name").value;
+        const category = document.getElementById("create-category").value;
+        const description = document.getElementById("create-description").value;
+        const price = document.getElementById("create-price").value;
+
+        // Input-kontroll.
+        if (!name || !category || !description || !price) {
+            // Felmeddelande visas.
+            errorContainer.textContent = "Alla fält måste fyllas i.";
+            // Koden exekveras inte vidare.
+            return;
+        }
+
+        // Skapar ett nytt glass-objekt.
+        const newIcecream = {
+            name,
+            category,
+            description,
+            price
+        };
+
+        // API-URL.
+        const createUrl = "https://webbservice.onrender.com/icecreams";
+
+        // AJAX-anrop med metoden POST.
+        try {
+            const response = await fetch(createUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newIcecream)
+            });
+
+            // Svar.
+            const result = await response.json();
+
+            // Villkor, om lagring lyckas.
+            if (response.ok) {
+                // Visar en alert om lyckad lagring, kör reset på och döljer formulär.
+                alert("Glassen lades till!");
+                createForm.reset();
+                createForm.style.display = "none";
+                // Uppdaterar menyn.
+                getMenu();
+
+            // Alert med felmeddelande om lagringen misslyckas.
+            } else {
+                alert("Något gick fel när glassen skulle sparas. Prova igen!");
+            }
+
+        // Felmeddelande.
+        } catch (error) {
+            console.error("Error creating new ice cream:", error);
+            errorContainer.textContent = "Ett fel uppstod. Försök igen.";
+        }
+    });
+}
+
 // Funktion som raderar en glass från menyn.
 async function eraseIcecream(event) {
     // Hämtar ID för knappen/glassen.
-    const icecreamId = event.currentTarget.getAttribute('data-id');
+    const icecreamId = event.currentTarget.getAttribute("data-id");
 
     // API-url med ID som endpoint.
     const deleteUrl = `https://webbservice.onrender.com/icecreams/${icecreamId}`;
@@ -143,15 +217,15 @@ async function getScores() {
 
             // Formaterar datumet till åå-mm-dd.
             const date = new Date(score.date);
-            const formattedDate = date.toLocaleDateString('sv-SE', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
+            const formattedDate = date.toLocaleDateString("sv-SE", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
             });
 
             // Skapar ett listelement för varje betyg inkl. knapp för att radera.
             const scoreItem = document.createElement("li");
-            // Lägger till data-id för varje knapp för att kunna identifiera betygen.
+            // Lägger till data-id för knapp för att kunna identifiera knappen/betyget.
             scoreItem.innerHTML = `
                 <p>${stars}</p>
                 <p>${score.name}</p>
@@ -177,7 +251,7 @@ async function getScores() {
 // Funktion som raderar ett besöksbetyg.
 async function eraseScore(event) {
     // Hämtar ID för knappen/betyget.
-    const scoreId = event.currentTarget.getAttribute('data-id');
+    const scoreId = event.currentTarget.getAttribute("data-id");
 
     // API-url med ID som endpoint.
     const deleteUrl = `https://webbservice.onrender.com/scores/${scoreId}`;
@@ -212,10 +286,13 @@ async function eraseScore(event) {
 // Händelselyssnare vid sidladdning.
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Hämtar in knappar och sektioner.
+    // Hämtar in knappar, formulär och sektioner.
     const logoutButton = document.querySelectorAll(".logout");
+    const newIcecreamButton = document.getElementById("newIcecream");
     const menuButton = document.getElementById("menu-button");
     const scoreButton = document.getElementById("score-button");
+    const createForm = document.getElementById("createForm");
+    const updateForm = document.getElementById("updateForm");
     const menuSection = document.getElementById("menu");
     const scoreSection = document.getElementById("score");
 
@@ -224,11 +301,34 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", logoutAdmin);
     });
 
+    // Lägger till händelselyssnare på "skapa ny"-knappen.
+    newIcecreamButton.addEventListener("click", function () {
+        createForm.style.display = "block";
+        // Anropar funktionen som sköter händelselyssnare för avbryt-knappen.
+        addCancelListener();
+    });
+
+    // Anropar skapa-ny-glass-funktionen.
+    createIcecream();
+
+    // Funktion som lägger till händelselyssnare på avbryt-knappar.
+    function addCancelListener() {
+        document.querySelectorAll(".cancel-button").forEach(button => {
+            button.addEventListener("click", function (event) {
+                // Förhindrar default-beteende.
+                event.preventDefault();
+                // Fäller ihop/döljer fomuläret.
+                createForm.style.display = "none";
+                updateForm.style.display = "none";
+            });
+        });
+    }
+
     // Kontrollerar autentisering om admin är på admin-gränssnittet.
     if (window.location.pathname.endsWith("admin.html")) {
         checkAuthentication();
     }
-    
+
     // Funktion för att visa och dölja sektioner.
     function toggleSections(showSection, hideSection) {
         showSection.style.display = "block";
@@ -259,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Funktion som skapar stjärn-ikoner baserat på betyget som angetts, 1-5.
 function createStars(score) {
     // Börjar med tom sträng.
-    let stars = '';
+    let stars = "";
 
     // Loopar genom siffrorna 1 till 5 fem gånger.
     for (let i = 1; i <= 5; i++) {

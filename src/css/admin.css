@@ -43,7 +43,7 @@ main {
 /* Knappar för att välja meny eller betyg. */
 #menu-button, 
 #score-button {
-    color: #ffffff;
+    color: #000000;
     height: 45px;
     width: 200px;
     font-size: 20px;
@@ -68,6 +68,7 @@ main {
     background-color: #d6b54c;
 }
 
+/* Sektionen för meny. */
 #menu {
     text-align: center;
     background-color: #43332A;
@@ -78,7 +79,7 @@ main {
 /* Knapp för att skapa ny post i menyn. */
 #newIcecream {
     background-color: #8ea178;
-    color: #ffffff;
+    color: #000000;
     height: 45px;
     width: 200px;
     font-size: 22px;
@@ -94,6 +95,72 @@ main {
     }
 }
 
+.form-container  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+#createForm h2,
+#updateForm h2 {
+    margin: 3rem 0 0 0;
+}
+
+#createForm input,
+#createForm label,
+#updateForm input,
+#updateForm label,
+.categories {
+    width: 100%;
+    height: 35px;
+}
+
+#createForm input,
+#updateForm input {
+    padding-left: 5px;
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+#create-description,
+#update-description {
+    width: 100%;
+    padding: 5px 0 0 5px;
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
+.formText {
+    text-align: left;
+}
+
+/* Knapp för att uppdatera en glass. */
+.save-button,
+.cancel-button {
+    color: #000000;
+    height: 45px;
+    width: 105px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-top: 1rem;
+
+    /* Hover-effekt. */
+    &:hover {
+        font-size: 150%;
+    }
+}
+
+/* Olika färger på knapparna. */
+.save-button {
+    background-color: #8ea178;
+}
+
+.cancel-button {
+    background-color: #d6b54c;
+}
+
 /* Glass-poster. */
 .icecream-list li {
     margin: 2rem 1rem;
@@ -104,15 +171,15 @@ main {
 /* Knapp för att uppdatera en glass. */
 .editIcecream {
     background-color: #d6b54c;
-    color: #ffffff;
+    color: #000000;
     height: 45px;
-    width: 200px;
+    width: 225px;
     font-size: 22px;
     font-weight: bold;
     padding: 5px 10px;
     cursor: pointer;
     border: none;
-    margin: 1rem 1rem 0 1rem;
+    margin-top: 1rem;
 
     /* Hover-effekt. */
     &:hover {
@@ -126,10 +193,9 @@ main {
     background-color: #b10c0e;
     color: #ffffff;
     height: 45px;
-    width: 200px;
+    width: 225px;
     font-size: 22px;
     font-weight: bold;
-    padding: 5px 10px;
     cursor: pointer;
     border: none;
     margin: 1rem 0;

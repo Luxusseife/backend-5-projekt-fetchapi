@@ -45,61 +45,79 @@
 
             <button id="newIcecream">SKAPA NY</button>
 
-            <form id="createForm" method="post" action="#" style="display: none;">
-                <br>
-                <label for="name">Namn:</label>
-                <br>
-                <input type="text" id="name" name="name" placeholder="Vad heter glassen?">
-                <br>
-                <br>
-                <label for="category">Kategori:</label>
-                <select name="category" id="category">
-                    <option value="alkohol">Alkohol</option>
-                    <option value="kaffe-och-choklad">Kaffe och choklad</option>
-                    <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
-                    <option value="nötter-och-ost">Nötter och ost</option>
-                </select>
-                <br>
-                <label for="description">Beskrivning:</label>
-                <br>
-                <input type="text" id="description" name="description" placeholder="Vad är det för glass?">
-                <br>
-                <br>
-                <label for="price">Pris:</label>
-                <br>
-                <input type="text" id="price" name="price" placeholder="Vad kostar en kula?">
-                <br>
-                <p id="error-container"></p>
-                <button type="submit">Lägg till</button>
-            </form>
+            <div class="form-container">
+                <form id="createForm" method="post" action="#" style="display: none;">
+                    <h2>SKAPA GLASS</h2>
+                    <br>
+                    <div class="formText">
+                        <label for="create-name">Namn:</label>
+                        <br>
+                        <input type="text" id="create-name" name="create-name" placeholder="Vad heter glassen?">
+                        <br>
+                        <br>
+                        <label for="create-category">Kategori:</label>
+                        <br>
+                        <select name="category" class="categories" id="create-category">
+                            <option value="alkohol">Alkohol</option>
+                            <option value="kaffe-och-choklad">Kaffe och choklad</option>
+                            <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
+                            <option value="nötter-och-ost">Nötter och ost</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="create-description">Beskrivning:</label>
+                        <br>
+                        <textarea id="create-description" name="description" placeholder="Vad är det för glass?" rows="4"
+                            cols="30"></textarea>
+                        <br>
+                        <br>
+                        <label for="create-price">Pris, ??KR:</label>
+                        <br>
+                        <input type="text" id="create-price" name="create-price" placeholder="Vad kostar en kula?">
+                        <br>
+                        <p class="error-container"></p>
+                        <button class="save-button" type="submit">SPARA</button>
+                        <button class="cancel-button">AVBRYT</button>
+                    </div>
+                </form>
+            </div>
 
-            <form id="updateForm" method="put" action="#" style="display: none;">
-                <br>
-                <label for="name">Namn:</label>
-                <br>
-                <input type="text" id="name" name="name" placeholder="">
-                <br>
-                <br>
-                <label for="category">Kategori:</label>
-                <select name="category" id="category">
-                    <option value="alkohol">Alkohol</option>
-                    <option value="kaffe-och-choklad">Kaffe och choklad</option>
-                    <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
-                    <option value="nötter-och-ost">Nötter och ost</option>
-                </select>
-                <br>
-                <label for="description">Beskrivning:</label>
-                <br>
-                <input type="text" id="description" name="description" placeholder="">
-                <br>
-                <br>
-                <label for="price">Pris:</label>
-                <br>
-                <input type="text" id="price" name="price" placeholder="">
-                <br>
-                <p id="error-container"></p>
-                <button type="submit">Lägg till</button>
-            </form>
+            <div class="form-container">
+                <form id="updateForm" method="post" action="#" style="display: none;">
+                    <h2>UPPDATERA GLASS</h2>
+                    <br>
+                    <div class="formText">
+                        <label for="update-name">Namn:</label>
+                        <br>
+                        <input type="text" id="update-name" name="update-name" placeholder="Vad heter glassen?">
+                        <br>
+                        <br>
+                        <label for="update-category">Kategori:</label>
+                        <br>
+                        <select name="category" class="categories" id="update-category">
+                            <option value="alkohol">Alkohol</option>
+                            <option value="kaffe-och-choklad">Kaffe och choklad</option>
+                            <option value="bär-citrus-och-kryddor">Bär, citrus och kryddor</option>
+                            <option value="nötter-och-ost">Nötter och ost</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="update-description">Beskrivning:</label>
+                        <br>
+                        <textarea id="update-description" name="description" placeholder="Vad är det för glass?" rows="4"
+                            cols="30"></textarea>
+                        <br>
+                        <br>
+                        <label for="update-price">Pris, ??KR:</label>
+                        <br>
+                        <input type="text" id="update-price" name="update-price" placeholder="Vad kostar en kula?">
+                        <br>
+                        <p id="error-container"></p>
+                        <button class="save-button" type="submit">SPARA</button>
+                        <button class="cancel-button">AVBRYT</button>
+                    </div>
+                </form>
+            </div>
 
             <div id="alkohol" class="category">
                 <h3>ALKOHOL</h3>

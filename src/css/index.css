@@ -201,6 +201,7 @@
 .form-container p {
     line-height: 1.6;
     text-align: left;
+    margin-right: 1rem;
 }
 
 /* Formulär. */
@@ -221,7 +222,7 @@
 #score-radios {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
     margin: 1rem 0;
 }
 

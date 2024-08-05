@@ -226,11 +226,6 @@ main {
     }
 }
 
-/* Radera-ikon. */
-.fa-solid {
-    margin-left: 1rem;
-}
-
 /* Aktiv knapp. */
 #menu-button.active-button,
 #score-button.active-button {

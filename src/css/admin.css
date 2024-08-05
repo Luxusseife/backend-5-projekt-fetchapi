@@ -72,7 +72,7 @@ main {
 #menu {
     text-align: center;
     background-color: #43332A;
-    border: 5px solid #8ea178;
+    border: 10px solid #8ea178;
     margin: 2rem;
 }
 
@@ -123,6 +123,10 @@ main {
     font-family: 'Glacial Indifference', sans-serif;
 }
 
+.categories {
+    font-family: 'Glacial Indifference', sans-serif;
+}
+
 #create-description,
 #update-description {
     width: 100%;
@@ -161,6 +165,11 @@ main {
     background-color: #d6b54c;
 }
 
+#create-errors,
+#update-errors {
+    margin-top: 1rem;
+}
+
 /* Glass-poster. */
 .icecream-list li {
     margin: 2rem 1rem;
@@ -173,7 +182,7 @@ main {
     background-color: #d6b54c;
     color: #000000;
     height: 45px;
-    width: 225px;
+    width: 200px;
     font-size: 22px;
     font-weight: bold;
     padding: 5px 10px;
@@ -192,8 +201,8 @@ main {
 .eraseScore {
     background-color: #b10c0e;
     color: #ffffff;
+    width: 200px;
     height: 45px;
-    width: 225px;
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
@@ -220,7 +229,7 @@ main {
 /* Container för besöksbetygs. */
 .score-container {
     background-color: #43332A;
-    border: 5px solid #d6b54c;
+    border: 10px solid #d6b54c;
     color: #ffffff;
     margin: 2rem;
     text-align: center;
@@ -256,6 +265,15 @@ main {
 /* Betygsstjärna, tom. */
 .empty-star {
     color: #c4c3c3;
+}
+
+/* Mediaquery för större skärmar. */
+@media (min-width: 426px) {
+
+    #createForm,
+    #updateForm {
+        max-width: 500px;
+    }
 }
 
 /* Mediaquery för större skärmar. */

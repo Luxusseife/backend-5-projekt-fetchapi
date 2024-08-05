@@ -1,8 +1,10 @@
 "use strict";
 
 // Händelselyssnare för hela sidan, kör funktionerna getMenu och getScores direkt.
-document.addEventListener("DOMContentLoaded", getMenu);
-document.addEventListener("DOMContentLoaded", getScores);
+document.addEventListener("DOMContentLoaded", () => {
+    getMenu();
+    getScores();
+});
 
 // Funktion som hämtar lagrade glassar i menyn.
 async function getMenu() {
@@ -41,7 +43,7 @@ async function getMenu() {
 
     // Felmeddelande.
     } catch (error) {
-        console.log("Fetch failed. This message was created:", error);
+        console.error("Fetch failed. This message was created:", error);
     }
 }
 
@@ -88,7 +90,7 @@ async function getScores() {
 
     // Felmeddelande.
     } catch (error) {
-        console.log("Fetch failed. This message was created:", error);
+        console.error("Fetch failed. This message was created:", error);
     }
 }
 
@@ -128,10 +130,13 @@ const scoreForm = document.getElementById("form");
 scoreForm.addEventListener("submit", checkInput);
 
 // Funktion för att visa olika meddelanden.
-function displayMessage(containerId, message) {
-    const container = document.getElementById(containerId);
+function displayMessage(message) {
+    const container = document.getElementById("message-container");
+
+    // Lägger till nytt innehåll.
     container.innerHTML = message;
 }
+
 
 // Kontrollerar input.
 function checkInput(event) {
@@ -146,12 +151,12 @@ function checkInput(event) {
     const score = scoreEl ? scoreEl.value : null;
 
     // Rensar tidigare felmeddelanden.
-    displayMessage("error-container", "");
+    displayMessage("");
 
     // Kontrollerar input, om namn och betyg ej är angivet visas fel.
     if (!name || !score) {
         // Visar ett felmeddelande till besökaren om att input saknas.
-        displayMessage("error-container", "Namn och betyg måste anges!");
+        displayMessage("Namn och betyg måste anges!");
         // Koden exekveras inte vidare om input saknas.
         return;
     }
@@ -182,18 +187,18 @@ async function storeScore(name, score) {
             document.getElementById("form").reset();
 
             // Visar ett meddelande om lyckad lagring.
-            displayMessage("success-container", "Ditt betyg har skickats in. Tack!");
+            displayMessage("Ditt betyg har skickats in. Tack!");
 
         // Felmeddelande om lagring misslyckas.
         } else if (response.status === 400) {
             // Hämtar och visar felmeddelandet från servern.
             const statusError = await response.json();
-            displayMessage("error-container", statusError.error || "Något gick fel när ditt betyg skickades. Prova igen!");
+            displayMessage(statusError.error || "Något gick fel när ditt betyg skickades. Prova igen!");
         }
 
     // Felmeddelande.
     } catch (error) {
-        displayMessage("error-container", "Det uppstod ett fel vid lagringen: " + error.message);
+        displayMessage("Det uppstod ett fel vid lagringen: " + error.message);
         console.error("Fel vid lagring: ", error);
     }
 }

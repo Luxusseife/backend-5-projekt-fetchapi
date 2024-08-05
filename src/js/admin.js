@@ -65,13 +65,18 @@ async function getMenu() {
                 <h4>${icecream.name}</h4>
                 <p>${icecream.description}</p>
                 <p>${icecream.price}</p>
-                <button class="editIcecream">UPPDATERA<i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="editIcecream" data-id="${icecream._id}">ÄNDRA<i class="fa-solid fa-pen-to-square"></i></button>
                 <button class="eraseIcecream" data-id="${icecream._id}">RADERA<i class="fa-solid fa-trash-can"></i></button>
                 `;
 
             // Lägger till listelementet i rätt kategori-div.
             const list = categoryDiv.querySelector(".icecream-list");
             list.appendChild(icecreamItem);
+        });
+
+        // Lägger till händelselyssnare för uppdatera-knappen.
+        document.querySelectorAll(".editIcecream").forEach(button => {
+            button.addEventListener("click", handleIcecreamUpdate);
         });
 
         // Lägger till händelselyssnare på samliga radera-knappar som anropar raderingsfunktion.
@@ -90,7 +95,7 @@ async function createIcecream() {
 
     // Hämtar in formulär och container för felmeddelande.
     const createForm = document.getElementById("createForm");
-    const errorContainer = document.querySelectorAll("error-container");
+    const errorContainer = document.getElementById("create-errors");
 
     // Lägger en händelselyssnare på submit-knappen i formuläret.
     createForm.addEventListener("submit", async function (event) {
@@ -103,6 +108,9 @@ async function createIcecream() {
         const category = document.getElementById("create-category").value;
         const description = document.getElementById("create-description").value;
         const price = document.getElementById("create-price").value;
+
+        // Radera tidigare innehåll.
+        errorContainer.textContent = "";
 
         // Input-kontroll.
         if (!name || !category || !description || !price) {
@@ -156,6 +164,130 @@ async function createIcecream() {
             errorContainer.textContent = "Ett fel uppstod. Försök igen.";
         }
     });
+}
+
+// Funktion som hämtar redan lagrad input från aktuell glass och fyller i formulär.
+async function handleIcecreamUpdate(event) {
+
+    // Hämtar ID för knappen/glassen.
+    const icecreamId = event.currentTarget.getAttribute("data-id");
+
+    // API-url med ID som endpoint.
+    const handleUrl = `https://webbservice.onrender.com/icecreams/${icecreamId}`;
+
+    // AJAX-anrop där lagrad data hämtas och skrivs ut i formulär.
+    try {
+        const response = await fetch(handleUrl);
+        const data = await response.json();
+
+        // Fyller i formuläret med befintlig data.
+        document.getElementById("update-name").value = data.icecream.name;
+        document.getElementById("update-description").value = data.icecream.description;
+        document.getElementById("update-price").value = data.icecream.price;
+
+        // Hämtar in selectboxen. 
+        const updateCategory = document.getElementById("update-category");
+
+        // Funktion som normaliserar kategorinamnen.
+        function normalizeCategory(category) {
+            return category
+            .toLowerCase()
+            .replace(/[^a-zåäö]+/g, "-");
+        }
+
+        // Hittar matchande alternativ i select-elementet.
+        const normalizedCategory = normalizeCategory(data.icecream.category);
+        const matchingOption = Array.from(updateCategory.options).find(option =>
+            normalizeCategory(option.value) === normalizedCategory
+            );
+
+        // Villkor; om ett matchande värde hittas sätts värdet och detta visas i formuläret.
+        if (matchingOption) {
+            updateCategory.value = matchingOption.value;
+        }
+
+        // Visar formuläret.
+        const updateForm = document.getElementById("updateForm");
+        updateForm.style.display = "block";
+
+        // Scrollar till formuläret.
+        updateForm.scrollIntoView({ behavior: "smooth" });
+
+        // Lägger till en händelselyssnare på submit-knappen.
+        updateForm.addEventListener("submit", async function (event) {
+            // Förhindrar default-beteende.
+            event.preventDefault(); 
+            // Väntar in händelser/åtgärder innan anrop av uppdateringsfunktion.
+            await updateIcecream(icecreamId);
+            // Ser till att händelselyssnaren endast körs en gång.
+        }, { once: true });
+
+    // Felmeddelande.
+    } catch (error) {
+        console.error("Error fetching ice cream data:", error);
+    }
+}
+
+// Funktion som uppdaterar en vald glass.
+async function updateIcecream(icecreamId) {
+
+    // Hämtar in inputvärden och container för felmeddelanden.
+    const name = document.getElementById("update-name").value;
+    const category = document.getElementById("update-category").value;
+    const description = document.getElementById("update-description").value;
+    const price = document.getElementById("update-price").value;
+    const errorContainer = document.getElementById("update-errors");
+
+    // Radera tidigare innehåll.
+    errorContainer.textContent = "";
+
+    // Input-kontroll
+    if (!name || !category || !description || !price) {
+        errorContainer.textContent = "Alla fält måste fyllas i.";
+        return;
+    }
+
+    // Skapar ett uppdaterat glass-objekt.
+    const updatedIcecream = {
+        name,
+        category,
+        description,
+        price
+    };
+
+    // API-url med ID som endpoint.
+    const updateUrl = `https://webbservice.onrender.com/icecreams/${icecreamId}`;
+
+    // AJAX-anrop med metoden PUT.
+    try {
+        const response = await fetch(updateUrl, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedIcecream)
+        });
+
+        // Villkor; om uppdatering lyckas.
+        if (response.ok) {
+            // Visar en alert, kör reset på och döljer formuläret.
+            alert("Glassen uppdaterades!");
+            const updateForm = document.getElementById("updateForm");
+            updateForm.reset();
+            updateForm.style.display = "none";
+            // Uppdaterar meny-listan.
+            getMenu();
+
+        // Alert med felmeddelande om uppdateringen misslyckas.
+        } else {
+            alert("Något gick fel när glassen skulle uppdateras. Prova igen!");
+        }
+
+    // Felmeddelande.
+    } catch (error) {
+        console.error("Error updating ice cream:", error);
+        errorContainer.textContent = "Ett fel uppstod. Försök igen.";
+    }
 }
 
 // Funktion som raderar en glass från menyn.
@@ -304,8 +436,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Lägger till händelselyssnare på "skapa ny"-knappen.
     newIcecreamButton.addEventListener("click", function () {
         createForm.style.display = "block";
-        // Anropar funktionen som sköter händelselyssnare för avbryt-knappen.
-        addCancelListener();
     });
 
     // Anropar skapa-ny-glass-funktionen.
@@ -323,6 +453,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    // Anropar funktionen som sköter händelselyssnare för avbryt-knappen.
+    addCancelListener();
 
     // Kontrollerar autentisering om admin är på admin-gränssnittet.
     if (window.location.pathname.endsWith("admin.html")) {

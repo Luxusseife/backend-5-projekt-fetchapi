@@ -33,7 +33,7 @@ Den här README-filen har skapats för att beskriva momentets syfte och kort red
 16. Innehållet för den skyddade admin-sidan utformas med HTML och CSS i form av knappar avsedda för olika sektionsvisningar; för meny eller besöksbetyg. I sektionerna hämtas meny/betyg från databasen med en fetch och visas i listor där knappar för uppdatering och/eller radering läggs till för varje listelement för att kunna utföra CRUD.
 17. Funktionalitet för admin-sidan görs med JavaScript där hanterings-knappar visar olika innehåll och där klick på radera på ett listelement tar bort glass/betyg från listan och från databasen. 
 18. Funktionalitet för att skapa ny glasspost görs med JavaScript där ett knappklick fäller ut ett formulär vars submit-knapp lägger till glassen i listan och i databasen.
-19. ...
+19. Funktionalitet för att uppdatera specifika glassar görs med JavaScript där klick på uppdatera på ett listelement fäller ut ett formulär (samma som skapa ny) där tidigare värden redan är ifyllda. Submitknappen uppdaterar posten i listan och i databasen.
 
 
 #### _Skapad av Jenny Lind, jeli2308_.

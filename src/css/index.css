@@ -251,7 +251,7 @@
 /* Knapp för att lämna besöksbetyg. */
 #form button {
     background-color: #43332A;
-    color: white;
+    color: #ffffff;
     height: 45px;
     width: 200px;
     font-size: 22px;
@@ -452,6 +452,7 @@
     /* Knapp för att lämna besöksbetyg. */
     #form button {
         background-color: #d6b54c;
+        color: #000000;
     }
 }
 

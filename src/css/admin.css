@@ -107,6 +107,11 @@ main {
     margin: 0 1rem;
 }
 
+.icecream-list .fa-solid,
+.score-container .fa-solid {
+    margin-left: 1rem;
+}
+
 /* Rubriker i formulär. */
 #createForm h2,
 #updateForm h2 {

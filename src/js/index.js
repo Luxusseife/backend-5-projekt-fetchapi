@@ -189,6 +189,9 @@ async function storeScore(name, score) {
             // Visar ett meddelande om lyckad lagring.
             displayMessage("Ditt betyg har skickats in. Tack!");
 
+            // Uppdaterar betygslistan.
+            getScores();
+
         // Felmeddelande om lagring misslyckas.
         } else if (response.status === 400) {
             // Hämtar och visar felmeddelandet från servern.
